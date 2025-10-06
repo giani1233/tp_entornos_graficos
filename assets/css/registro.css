@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'AsapCondensed';
+    src: url('../fonts/AsapCondensed-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AsapCondensedBold';
+    src: url('../fonts/AsapCondensed-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+#form-container, 
+#form-container *, .opciones {
+    font-family: 'AsapCondensed', sans-serif;
+    color: #49596B;
+}
+
+#btn-registrarse{
+    color: #ffffff;
+    background-color: #afcae8;
+    font-family: 'AsapCondensedBold', sans-serif;
+    border: 0px;
+}
+
+#tarjeta-registrarse h4 {
+    color: #7a8fa8 !important;
+    font-family: 'AsapCondensedBold', sans-serif;
+}
+
+#tarjeta-registrarse {
+    background-color: #afcae826 !important;
+    color: #7a8fa8 !important;
+    border-top-left-radius: 1.38cm;
+    border-top-right-radius: 1.38cm;
+}
+
+#form-container .card {
+    border-radius: 1.38cm;
+}
+
+#posee-cuenta a {
+    color: #2c537a;
+}
+
+.form-control, .form-select {
+    background-color: #2c537a25 !important;
+}
