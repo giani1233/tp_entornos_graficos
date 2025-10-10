@@ -1,0 +1,259 @@
+#navbar-visitante {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: #f3faff;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+}
+
+#navbar-visitante .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#navbar-visitante .nav-link {
+    color: #4c596a;
+    font-weight: 600;
+}
+
+#edificio {
+    width: 90vw;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+#main-visitante {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar-visitante .navbar-collapse {
+    background-color: #f3faff;
+    padding: 0.5rem 1rem;
+}
+
+#navbar-visitante .navbar-nav {
+    flex-direction: row;
+    gap: 1rem;
+}
+
+#logo-header {
+    width: 5vw;
+    height: auto;
+}
+
+#logo-reducido {
+    display: none;
+    width: 3.5vw;
+    height: auto;
+}
+
+#right-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#icono-busqueda {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+
+@media (min-width: 992px) {
+    #navbar-visitante .container-fluid {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+    }
+
+    #navbar-visitante .navbar-brand {
+        grid-column: 1;
+    }
+
+    #navbarNav {
+        grid-column: 2;
+        display: flex !important;
+        justify-content: center;
+    }
+
+    #right-buttons {
+        grid-column: 3;
+        justify-self: end;
+    }
+
+    .navbar-toggler {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1300px) {
+    #logo-header {
+        width: 7vw;
+    }
+}
+
+@media (max-width: 992px) { 
+    #logo-header {
+        display: none;
+    }
+    #logo-reducido {
+        display: block; 
+    }
+
+    .navbar-toggler {
+        display: block !important;
+    }
+    
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #f3faff;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+    
+    #navbar-visitante .navbar-nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+    
+    #right-buttons {
+        position: static;
+        transform: none;
+    }
+    #icono-busqueda {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    #logo-reducido {
+        width: 6.5vw;
+    }
+}
+
+@media (min-width: 1300px) {
+    #navbar-items {
+        display: flex;
+        justify-content: center;
+        width: 100%;      
+    }
+
+    #navbar-items .nav-link {
+        text-align: center;
+        margin: 0 40px;       
+    }
+}
+
+@media (max-width: 1299.98px) and (min-width: 992px) {
+    #navbar-items {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 15px;
+    }
+
+    #navbar-items .nav-link {
+        flex: 1; 
+        text-align: center;
+    }
+}
+
+#espacio {
+    height: 15vh;
+}
+
+@media (max-width: 992px) {
+    #espacio {
+        height: 12vh;
+    }
+}
+
+@media (max-width: 576px) {
+    #espacio {
+        height: 10vh; 
+    }
+}
+
+#barra-busqueda {
+    display: none;
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    #navbar-visitante .navbar-collapse {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+    #barra-busqueda {
+        margin: 0 auto;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 992px) {
+    #barra-busqueda {
+        margin-top: 0.5rem;
+        max-width: 90vw;
+        width: 100%;
+    }
+}
+
+#barra-busqueda {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    transform: translateY(-50%);
+    width: 240px;
+    max-width: 350px;
+    min-width: 250px;
+    padding: 0.4em 1.8em 0.4em 1em;
+    border-radius: 20px;
+    border: 1px solid #b5c6d6;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(76,89,106,0.10);
+    font-size: 1rem;
+    color: #4c596a;
+    outline: none;
+    display: none;
+    z-index: 2000;
+}
+
+#barra-busqueda::placeholder {
+    color: #b5c6d6;
+    opacity: 1;
+}
+
+#barra-busqueda.visible {
+    display: block;
+}
+
+@media (max-width: 991.98px) {
+    #barra-busqueda {
+        position: static !important;
+        right: unset !important;
+        top: unset !important;
+        transform: none !important;
+        width: 100%;
+        max-width: 95vw;
+        margin: 0.5rem 0;
+        border-radius: 15px;
+        box-shadow: 0 2px 8px rgba(76,89,106,0.08);
+    }
+}

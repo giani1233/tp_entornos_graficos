@@ -60,3 +60,4 @@ function validarRegistro(event) {
 
     event.target.submit();
 }
+
