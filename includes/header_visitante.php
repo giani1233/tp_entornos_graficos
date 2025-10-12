@@ -6,6 +6,7 @@
     <title>Rio Shopping</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"> 
     <link href="assets/css/visitante.css" rel="stylesheet"> 
+    <link href="assets/css/carrusel.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" id="navbar-visitante">

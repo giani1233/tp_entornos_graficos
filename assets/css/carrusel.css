@@ -1,0 +1,219 @@
+@font-face {
+    font-family: 'AsapCondensedSemiBold';
+    src: url('../fonts/AsapCondensed-SemiBold.ttf') format('truetype');
+    font-weight: semi-bold;
+    font-style: normal;
+}
+
+.seccion-promociones {
+    width: 100%;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    background: transparent
+}
+
+.titulo-seccion-promociones {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4c596a;
+    margin-bottom: 1.5rem;
+    font-family: 'AsapCondensedSemiBold', sans-serif;
+}
+
+.contenedor-seccion-promociones {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.contenedor-promociones {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.carrusel-promociones {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch; 
+    padding: 20px 10px;
+}
+
+.carrusel-promociones::-webkit-scrollbar {
+    display: none;
+}
+
+.tarjeta-promo {
+    flex: 0 0 clamp(180px, 16vw, 300px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    background-color: #7e8fa5;
+}
+
+.imagen-promocion {
+    width: 100%;
+    aspect-ratio: 1 / 1;   
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 10px; 
+    box-sizing: border-box;
+}
+
+.imagen-promocion img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px; 
+    display: block;
+}
+
+.contenido-promo {
+    flex: 0 0 auto;
+    padding: 12px 10px 14px 10px;
+    color: white;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 60px; 
+}
+
+.boton-descubrir {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.4); 
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(6px); 
+    width: auto; 
+    min-width: 120px; 
+}
+
+.boton-descubrir:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-2px);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.7);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.carousel-btn-prev {
+    left: -20px; 
+}
+
+.carousel-btn-next {
+    right: -20px; 
+}
+
+.carousel-btn:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+
+.alert-info {
+    background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+    border: 1px solid #b8daff;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.alert-info h4 {
+    color: #0c5460;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 1200px) {
+    .tarjeta-promo {
+        flex: 0 0 clamp(160px, 22vw, 240px);
+        min-width: 160px;
+        max-width: 240px;
+    }
+}
+
+@media (max-width: 900px) {
+    .tarjeta-promo {
+        flex: 0 0 clamp(140px, 30vw, 200px);
+        min-width: 140px;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 700px) {
+    .tarjeta-promo {
+        flex: 0 0 80vw; 
+    }
+
+    .imagen-promocion {
+        padding: 8px; 
+        max-height: 60%; 
+    }
+
+    .seccion-promociones {
+        margin-top: 2rem;
+        padding: 1.5rem 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .tarjeta-promo {
+        flex: 0 0 92vw;
+    }
+
+    .imagen-promocion {
+        padding: 6px;
+        max-height: 55%; 
+    }
+
+    .seccion-promociones {
+        margin-top: 1.5rem;
+        padding: 1rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .titulo-seccion-promociones {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo-seccion-promociones {
+        font-size: 1.2rem;
+    }
+}

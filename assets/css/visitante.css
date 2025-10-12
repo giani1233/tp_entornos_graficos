@@ -32,8 +32,10 @@
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column; 
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    width: 100%;
 }
 
 #navbar-visitante .navbar-collapse {
@@ -257,3 +259,4 @@
         box-shadow: 0 2px 8px rgba(76,89,106,0.08);
     }
 }
+
