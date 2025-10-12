@@ -62,7 +62,7 @@
                 <button class="carousel-btn carousel-btn-prev" onclick="moverCarrusel(-1)">
                     ‹
                 </button>
-                <div class="carrusel-promociones">
+                <div class="carrusel-promociones" id="ofertas">
                     <?php foreach($promociones as $promo): 
                         $dias_semana_promo = json_decode($promo['diasSemana'] ?? '[]', true);
                     ?>
@@ -70,16 +70,16 @@
                         <div class="imagen-promocion">
                             <?php if(!empty($promo['imagen'])): ?>
                                 <img src="assets/images/promociones/<?php echo $promo['imagen']; ?>" 
-                                    alt="<?php echo htmlspecialchars($promo['textoPromo']); ?>">
+                                    alt="<?php echo htmlspecialchars($promo['imagen']); ?>">
                             <?php else: ?>
                                 <img src="assets/images/promociones/no-imagen.png" 
                                     alt="Promoción sin imagen">
                             <?php endif; ?>
                         </div>
                         <div class="contenido-promo">
-                            <button class="boton-descubrir">
+                            <a href="promocion.php?codPromo=<?= $promo['codPromo'] ?>" class="boton-descubrir">
                                 Descubrir más
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <?php endforeach; ?>

@@ -1,0 +1,69 @@
+
+body.pagina-promocion {
+    background: #7e8fa5;
+}
+
+.contenedor-pagina-promocion {
+    max-width: 1000px;
+    width: 100%;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.contenedor-contenido-promocion {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.contenedor-imagen-promocion img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 15px;
+    object-fit: cover;
+    align-items: center;
+}
+
+.contenedor-detalles-promocion {
+    flex: 1;
+}
+
+.contenedor-detalles-promocion p {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .contenedor-pagina-promocion {
+        width: 90%;
+        margin: 2rem auto;
+        padding: 1.5rem;
+    }
+
+    .contenedor-contenido-promocion {
+        flex-direction: column;
+        align-items: center;    
+        gap: 1.5rem;
+    }
+
+    .contenedor-imagen-promocion {
+        display: flex;           
+        justify-content: center; 
+        width: 100%;
+    }
+
+    .contenedor-imagen-promocion img {
+        width: 90%;        
+        max-width: none;
+        border-radius: 15px;
+    }
+
+    .contenedor-detalles-promocion {
+        width: 100%;
+        text-align: center;
+    }
+}

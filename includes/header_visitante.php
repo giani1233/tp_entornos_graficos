@@ -7,19 +7,20 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"> 
     <link href="assets/css/visitante.css" rel="stylesheet"> 
     <link href="assets/css/carrusel.css" rel="stylesheet">
+    <link href="assets/css/promocion.css" rel="stylesheet">
 </head>
-<body>
+<body class="<?php echo $bodyClass ?? ''; ?>">
     <nav class="navbar navbar-expand-lg navbar-light" id="navbar-visitante">
         <div class="container-fluid">
             <div class="d-flex align-items-center">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.php">
                     <img src="assets/images/icono.svg" alt="Logo" id="logo-header">
                     <img src="assets/images/icono_reducido.svg" alt="Logo" id="logo-reducido">
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav" id="navbar-items">
-                    <a class="nav-item nav-link" href="#">Ofertas</a>
+                    <a class="nav-item nav-link" href="#ofertas">Ofertas</a>
                     <a class="nav-item nav-link" href="#">Entretenimiento</a>
                     <a class="nav-item nav-link" href="#">Locales</a>
                     <a class="nav-item nav-link" href="#">Compras</a>
