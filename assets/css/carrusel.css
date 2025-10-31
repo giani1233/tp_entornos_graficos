@@ -56,18 +56,22 @@
 }
 
 .tarjeta-promo {
+    position: relative;
     flex: 0 0 clamp(180px, 16vw, 300px);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     background-color: #7e8fa5;
+    -webkit-mask: url('../images/promocion.svg') no-repeat center / contain;
+    mask: url('../images/promocion.svg') no-repeat center / contain;
 }
 
 .imagen-promocion {
-    width: 100%;
+    width: 80%;
     aspect-ratio: 1 / 1;   
     overflow: hidden;
     display: flex;
@@ -75,6 +79,7 @@
     justify-content: center;
     flex-shrink: 0;
     padding: 10px; 
+    margin-top: 10px;
     box-sizing: border-box;
 }
 
@@ -88,13 +93,14 @@
 
 .contenido-promo {
     flex: 0 0 auto;
-    padding: 12px 10px 14px 10px;
+    width: 100%;
+    padding: 12px 1px 14px 10px;
     color: white;
     z-index: 2;
-    text-align: center;
+    text-align: right;
     display: flex;
     align-items: flex-end;
-    justify-content: center;
+    justify-content: flex-end;
     min-height: 60px; 
 }
 
@@ -107,11 +113,9 @@
     font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    backdrop-filter: blur(6px); 
     width: auto; 
     min-width: 120px; 
     text-decoration: none; 
-    background: rgba(255, 255, 255, 0.15);
 }
 
 .boton-descubrir:hover {
@@ -169,11 +173,49 @@
     margin-bottom: 1rem;
 }
 
+.separador {
+    height: 600px; 
+    width: 100%;
+    background-image: url('../images/ola.svg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 100% auto;
+    margin-bottom: -1px;
+}
+
+@media (max-width: 1400px) {
+    .tarjeta-promo {
+        flex: 0 0 clamp(170px, 20vw, 260px);
+        min-width: 170px;
+        max-width: 260px;
+    }
+    .boton-descubrir{
+        min-width: 115px; 
+        font-size: 0.8rem;
+    }
+    .separador{
+        height: 500px; 
+    }
+}
+
 @media (max-width: 1200px) {
     .tarjeta-promo {
         flex: 0 0 clamp(160px, 22vw, 240px);
         min-width: 160px;
         max-width: 240px;
+    }
+    .boton-descubrir{
+        min-width: 110px; 
+        font-size: 0.7rem;
+    }
+    .separador{
+        height: 450px; 
+    }
+}
+
+@media (max-width: 1050px) {
+    .separador{
+        height: 400px; 
     }
 }
 
@@ -183,11 +225,20 @@
         min-width: 140px;
         max-width: 200px;
     }
+    .boton-descubrir{
+        min-width: 100px; 
+        font-size: 0.65rem;
+    }
+    .separador{
+        height: 350px; 
+    }
 }
 
 @media (max-width: 700px) {
     .tarjeta-promo {
-        flex: 0 0 80vw; 
+        flex-direction: column; 
+        justify-content: flex-start; 
+        align-items: center; 
     }
 
     .imagen-promocion {
@@ -198,6 +249,50 @@
     .seccion-promociones {
         margin-top: 2rem;
         padding: 1.5rem 0;
+    }
+
+    .contenido-promo {
+        width: 100%;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        padding: 8px 0 8px 0; 
+        margin-top: -15px; 
+    }
+
+    .boton-descubrir {
+        min-width: auto; 
+        max-width: 90%;
+    }
+
+    .separador{
+        height: 300px; 
+    }
+}
+
+@media (max-width: 600px) {
+    .tarjeta-promo {
+        flex: 0 0 85vw;
+    }
+
+    .imagen-promocion {
+        padding: 8px;
+        max-height: 57%; 
+    }
+
+    .seccion-promociones {
+        margin-top: 1.8rem;
+        padding: 1.2rem 0;
+    }
+
+    .contenido-promo {
+        padding: 8px 0; 
+        margin-top: -14px;
+    }
+
+    .boton-descubrir {
+        font-size: 0.9rem;
+        max-width: 85%;
     }
 }
 
@@ -214,6 +309,49 @@
     .seccion-promociones {
         margin-top: 1.5rem;
         padding: 1rem 0;
+    }
+
+    .contenido-promo {
+        padding: 6px 0; 
+        margin-top: -12px;
+    }
+
+    .boton-descubrir {
+        font-size: 0.85rem;
+        max-width: 80%;
+    }
+
+    .separador{
+        height: 250px;
+    }
+}
+
+@media (max-width: 375px) {
+    .tarjeta-promo {
+        flex: 0 0 95vw;
+    }
+
+    .imagen-promocion {
+        padding: 5px;
+        max-height: 50%; 
+    }
+
+    .seccion-promociones {
+        margin-top: 1.2rem;
+        padding: 0.8rem 0;
+    }
+
+    .contenido-promo {
+        padding: 5px 0; 
+        margin-top: -10px;
+    }
+
+    .boton-descubrir {
+        font-size: 0.8rem;
+        max-width: 75%;
+    }
+    .separador{
+        height: 120px;
     }
 }
 

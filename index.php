@@ -37,6 +37,15 @@
         $resultado = mysqli_query($conexion, $sql);
     } 
 
+    $sql_locales = "SELECT * FROM locales WHERE activo = 1 AND rubroLocal != 'Gastronomia'";
+    $resultado_locales = mysqli_query($conexion, $sql_locales);
+    $locales = [];
+    if ($resultado_locales) {
+        while ($fila = mysqli_fetch_assoc($resultado_locales)) {
+            $locales[] = $fila;
+        }
+    }
+
     $promociones = [];
     if ($resultado) {
         while ($fila = mysqli_fetch_assoc($resultado)) {
@@ -50,7 +59,7 @@
     <img src="assets/images/edificio.svg" alt="Edificio" class="img-fluid" id="edificio">
 </div>
 
-<div class="seccion-promociones">
+<div class="seccion-promociones" id="ofertas">
     <h2 class="titulo-seccion-promociones">Promociones del día</h2>
     <div class="contenedor-seccion-promociones">
         <?php if(empty($promociones)): ?>
@@ -62,7 +71,7 @@
                 <button class="carousel-btn carousel-btn-prev" onclick="moverCarrusel(-1)">
                     ‹
                 </button>
-                <div class="carrusel-promociones" id="ofertas">
+                <div class="carrusel-promociones">
                     <?php foreach($promociones as $promo): 
                         $dias_semana_promo = json_decode($promo['diasSemana'] ?? '[]', true);
                     ?>
@@ -90,6 +99,38 @@
             </div>
         <?php endif; ?>
     </div>
+    <div class="separador"></div>
+    <div class="seccion-locales" id="locales">
+    <h2 class="titulo-seccion-locales">Nuestros locales</h2>
+    <div class="contenedor-seccion-locales">
+        <?php if(empty($locales)): ?>
+            <div class="alert alert-info text-center">
+                <h4>No hay locales disponibles</h4>
+            </div>
+        <?php else: ?>
+            <div class="grilla-locales">
+                <?php foreach($locales as $local): ?>
+                    <div class="tarjeta-local">
+                        <div class="imagen-local">
+                            <?php if(!empty($local['imagen'])): ?>
+                                <img src="assets/images/locales/<?php echo $local['imagen']; ?>" 
+                                    alt="<?php echo htmlspecialchars($local['imagen']); ?>">
+                            <?php else: ?>
+                                <img src="assets/images/promociones/no-imagen.png" 
+                                    alt="Local sin imagen">
+                            <?php endif; ?>
+                        </div>
+                        <div class="contenido-local">
+                            <a href="local.php?codLocal=<?= $local['codLocal'] ?>" class="boton-descubrir-local">
+                                Descubrir más
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?> 
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
 </div>
 <?php
     include 'includes/footer.php';

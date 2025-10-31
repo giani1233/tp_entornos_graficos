@@ -8,6 +8,7 @@
     <link href="assets/css/visitante.css" rel="stylesheet"> 
     <link href="assets/css/carrusel.css" rel="stylesheet">
     <link href="assets/css/promocion.css" rel="stylesheet">
+    <link href="assets/css/seccionLocales.css" rel="stylesheet">
 </head>
 <body class="<?php echo $bodyClass ?? ''; ?>">
     <nav class="navbar navbar-expand-lg navbar-light" id="navbar-visitante">
@@ -21,9 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav" id="navbar-items">
                     <a class="nav-item nav-link" href="#ofertas">Ofertas</a>
-                    <a class="nav-item nav-link" href="#">Entretenimiento</a>
-                    <a class="nav-item nav-link" href="#">Locales</a>
-                    <a class="nav-item nav-link" href="#">Compras</a>
+                    <a class="nav-item nav-link" href="#locales">Locales</a>
                     <a class="nav-item nav-link" href="#">Gastronomía</a>
                     <a class="nav-item nav-link" href="#">Servicios</a>
                     <a class="nav-item nav-link" href="#">Ingresar</a>
