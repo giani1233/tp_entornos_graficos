@@ -46,13 +46,30 @@
         }
     }
 
+    $sql_gastronomia = "SELECT * FROM locales WHERE activo = 1 AND rubroLocal = 'Gastronomia'";
+    $resultado_gastronomia = mysqli_query($conexion, $sql_gastronomia);
+    $gastronomia = [];
+    if ($resultado_gastronomia) {
+        while ($fila = mysqli_fetch_assoc($resultado_gastronomia)) {
+            $gastronomia[] = $fila;
+        }
+    }
+
     $promociones = [];
     if ($resultado) {
         while ($fila = mysqli_fetch_assoc($resultado)) {
             $promociones[] = $fila;
         }
     }
-    
+
+    $query_servicios = "SELECT * FROM servicios";
+    $resultado_servicios = mysqli_query($conexion, $query_servicios);
+    $servicios = [];
+    if ($resultado_servicios) {
+        while ($fila = mysqli_fetch_assoc($resultado_servicios)) {
+            $servicios[] = $fila;
+        }
+    }
 ?>
 
 <div class="contenedor-edificio">
@@ -60,59 +77,60 @@
 </div>
 
 <div class="seccion-promociones" id="ofertas">
-    <h2 class="titulo-seccion-promociones">Promociones del día</h2>
+    <h2 class="titulo-seccion-promociones mb-4 text-center">Promociones del día</h2>
     <div class="contenedor-seccion-promociones">
-        <?php if(empty($promociones)): ?>
+        <?php if (empty($promociones)): ?>
             <div class="alert alert-info text-center">
                 <h4>No hay promociones disponibles para hoy</h4>
             </div>
         <?php else: ?>
-            <div class="contenedor-promociones">
-                <button class="carousel-btn carousel-btn-prev" onclick="moverCarrusel(-1)">
-                    ‹
-                </button>
-                <div class="carrusel-promociones">
-                    <?php foreach($promociones as $promo): 
-                        $dias_semana_promo = json_decode($promo['diasSemana'] ?? '[]', true);
-                    ?>
-                    <div class="tarjeta-promo">
-                        <div class="imagen-promocion">
-                            <?php if(!empty($promo['imagen'])): ?>
-                                <img src="assets/images/promociones/<?php echo $promo['imagen']; ?>" 
-                                    alt="<?php echo htmlspecialchars($promo['imagen']); ?>">
-                            <?php else: ?>
-                                <img src="assets/images/promociones/no-imagen.png" 
-                                    alt="Promoción sin imagen">
-                            <?php endif; ?>
+            <div class="contenedor-promociones d-flex align-items-center position-relative">
+                <button class="carousel-btn carousel-btn-prev btn btn-light position-absolute start-0" onclick="moverCarrusel(-1)">‹</button>
+                
+                <div class="carrusel-promociones d-flex overflow-auto">
+                    <?php foreach ($promociones as $promo): ?>
+                        <div class="tarjeta-promo flex-shrink-0 mx-2">
+                            <div class="imagen-promocion">
+                                <?php if (!empty($promo['imagen'])): ?>
+                                    <img src="assets/images/promociones/<?php echo $promo['imagen']; ?>" 
+                                        class="img-fluid" 
+                                        alt="<?php echo htmlspecialchars($promo['imagen']); ?>">
+                                <?php else: ?>
+                                    <img src="assets/images/promociones/no-imagen.png" 
+                                        class="img-fluid" 
+                                        alt="Promoción sin imagen">
+                                <?php endif; ?>
+                            </div>
+                            <div class="contenido-promo mt-2 text-center">
+                                <a href="promocion.php?codPromo=<?= $promo['codPromo'] ?>" class="boton-descubrir">
+                                    Descubrir más
+                                </a>
+                            </div>
                         </div>
-                        <div class="contenido-promo">
-                            <a href="promocion.php?codPromo=<?= $promo['codPromo'] ?>" class="boton-descubrir">
-                                Descubrir más
-                            </a>
-                        </div>
-                    </div>
                     <?php endforeach; ?>
                 </div>
-                <button class="carousel-btn carousel-btn-next" onclick="moverCarrusel(1)">
-                    ›
-                </button>
+
+                <button class="carousel-btn carousel-btn-next btn btn-light position-absolute end-0" onclick="moverCarrusel(1)">›</button>
             </div>
         <?php endif; ?>
     </div>
-    <div class="separador"></div>
-    <div class="seccion-locales" id="locales">
+</div>
+
+<div class="separador"></div>
+
+<div class="seccion-locales" id="locales">
     <h2 class="titulo-seccion-locales">Nuestros locales</h2>
     <div class="contenedor-seccion-locales">
-        <?php if(empty($locales)): ?>
+        <?php if (empty($locales)): ?>
             <div class="alert alert-info text-center">
                 <h4>No hay locales disponibles</h4>
             </div>
         <?php else: ?>
             <div class="grilla-locales">
-                <?php foreach($locales as $local): ?>
+                <?php foreach ($locales as $local): ?>
                     <div class="tarjeta-local">
                         <div class="imagen-local">
-                            <?php if(!empty($local['imagen'])): ?>
+                            <?php if (!empty($local['imagen'])): ?>
                                 <img src="assets/images/locales/<?php echo $local['imagen']; ?>" 
                                     alt="<?php echo htmlspecialchars($local['imagen']); ?>">
                             <?php else: ?>
@@ -131,7 +149,74 @@
         <?php endif; ?>
     </div>
 </div>
+
+<div class="separador-2"></div>
+
+<div class="seccion-gastronomia" id="gastronomia">
+    <h2 class="titulo-seccion-gastronomia">Nuestra gastronomía</h2>
+    <div class="contenedor-seccion-gastronomia">
+        <?php if (empty($gastronomia)): ?>
+            <div class="alert alert-info text-center">
+                <h4>No hay opciones gastronómicas disponibles</h4>
+            </div>
+        <?php else: ?>
+            <div class="grilla-gastronomia">
+                <?php foreach ($gastronomia as $opcion): ?>
+                    <div class="tarjeta-gastronomia">
+                        <div class="imagen-gastronomia">
+                            <?php if (!empty($opcion['imagen'])): ?>
+                                <img src="assets/images/locales/<?php echo $opcion['imagen']; ?>" 
+                                    alt="<?php echo htmlspecialchars($opcion['imagen']); ?>">
+                            <?php else: ?>
+                                <img src="assets/images/promociones/no-imagen.png" 
+                                    alt="Local sin imagen">
+                            <?php endif; ?>
+                        </div>
+                        <div class="contenido-gastronomia">
+                            <a href="local.php?codLocal=<?= $opcion['codLocal'] ?>" class="boton-descubrir-gastronomia">
+                                Descubrir más
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?> 
+            </div>
+        <?php endif; ?>
+    </div>
 </div>
-<?php
-    include 'includes/footer.php';
-?>
+
+<div class="separador-3"></div>
+
+<section class="seccion-servicios py-5" id="servicios">
+    <div class="container text-center">
+        <h2 class="titulo-seccion-servicios mb-5">Nuestros servicios</h2>
+
+        <div class="row justify-content-center g-4">
+            <?php foreach ($servicios as $servicio): ?>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card tarjeta-servicio shadow-sm position-relative">
+                        <div class="imagen-servicio">
+                            <img 
+                                src="assets/images/servicios/<?php echo $servicio['imagenServicio']; ?>" 
+                                class="img-fluid" 
+                                alt="<?php echo htmlspecialchars($servicio['nombreServicio']); ?>">
+                        </div>
+
+                        <div class="card-body contenido-servicio">
+                            <h5 class="card-title">
+                                <?php echo htmlspecialchars($servicio['nombreServicio']); ?>
+                            </h5>
+                            <p class="card-text">
+                                <?php echo htmlspecialchars($servicio['descripcionServicio']); ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<div class="separador-4"></div>
+
+
+<?php include 'includes/footer.php'; ?>

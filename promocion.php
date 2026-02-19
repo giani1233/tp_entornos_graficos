@@ -27,20 +27,28 @@ if (!$resultado || mysqli_num_rows($resultado) == 0) {
 $promo = mysqli_fetch_assoc($resultado);
 ?>
 
-<div class="contenedor-pagina-promocion">
-    <div class="contenedor-contenido-promocion">
-        <div class="contenedor-imagen-promocion">
-            <?php if(!empty($promo['imagen'])): ?>
-                <img src="assets/images/promociones/<?php echo $promo['imagen']; ?>" alt="<?php echo htmlspecialchars($promo['imagen']); ?>">
+<div class="container my-5">
+    <div class="card shadow-sm">
+        <div class="row g-0">
+            <div class="col-md-5 text-center">
+                <?php if(!empty($promo['imagen'])): ?>
+                    <img src="assets/images/promociones/<?php echo $promo['imagen']; ?>" 
+                        class="img-fluid rounded-start" 
+                        alt="<?php echo htmlspecialchars($promo['textoPromo']); ?>">
                 <?php else: ?>
-                <img src="assets/images/promociones/no-imagen.png" alt="Promoción sin imagen">
-            <?php endif; ?>
-        </div>
-        <div class="contenedor-detalles-promocion">
-            <p><strong>Local:</strong> <?php echo htmlspecialchars($promo['nombreLocal']); ?></p>
-            <p><strong>Desde:</strong> <?php echo htmlspecialchars($promo['fechaDesdePromo']); ?></p>
-            <p><strong>Hasta:</strong> <?php echo htmlspecialchars($promo['fechaHastaPromo']); ?></p>
-            <p><strong>Promo:</strong> <?php echo htmlspecialchars($promo['textoPromo']); ?></p>
+                    <img src="assets/images/promociones/no-imagen.png" 
+                        class="img-fluid rounded-start" 
+                        alt="Promoción sin imagen">
+                <?php endif; ?>
+            </div>
+            <div class="col-md-7">
+                <div class="card-body">
+                    <h3 class="card-title mb-3"><?php echo htmlspecialchars($promo['nombreLocal']); ?></h3>
+                    <p class="card-text"><strong>Desde:</strong> <?php echo htmlspecialchars($promo['fechaDesdePromo']); ?></p>
+                    <p class="card-text"><strong>Hasta:</strong> <?php echo htmlspecialchars($promo['fechaHastaPromo']); ?></p>
+                    <p class="card-text"><strong>Promoción:</strong> <?php echo htmlspecialchars($promo['textoPromo']); ?></p>
+                </div>
+            </div>
         </div>
     </div>    
 </div>

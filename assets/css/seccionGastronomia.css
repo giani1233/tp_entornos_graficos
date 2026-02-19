@@ -1,25 +1,25 @@
-.seccion-locales {
+.seccion-gastronomia {
     width: 100%;
     padding: 2rem 0;
-    background-color: #7e8fa5;
+    background-color: #ffffff;
     margin-bottom: 0;
     padding-bottom: 0;
 }
 
-.titulo-seccion-locales {
+.titulo-seccion-gastronomia {
     text-align: center;
     font-size: 2rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #4c596a;
     margin-bottom: 1.5rem;
     font-family: 'AsapCondensedSemiBold', sans-serif;
 }
 
-.contenedor-locales {
+.contenedor-gastronomia {
     width: 100%;
 }
 
-.grilla-locales {
+.grilla-gastronomia {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 100px;
@@ -27,7 +27,7 @@
     margin-top: 5rem;
 }
 
-.tarjeta-local {
+.tarjeta-gastronomia {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -35,13 +35,13 @@
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    background-color: #ffffff;
+    background-color: #7e8fa5;
     height: auto;
     -webkit-mask: url('../images/promocion.svg') no-repeat center / contain;
     mask: url('../images/promocion.svg') no-repeat center / contain;
 }
 
-.imagen-local {
+.imagen-gastronomia {
     width: 80%;
     aspect-ratio: 1 / 1;   
     overflow: hidden;
@@ -53,7 +53,7 @@
     box-sizing: border-box;
 }
 
-.imagen-local img {
+.imagen-gastronomia img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -61,11 +61,11 @@
     display: block;
 }
 
-.contenido-local {
+.contenido-gastronomia {
     flex: 0 0 auto;
     width: 100%;
     padding: 12px 1px 14px 10px;
-    color: #7e8fa5;
+    color: white;
     z-index: 2;
     text-align: right;
     display: flex;
@@ -74,9 +74,9 @@
     min-height: 60px; 
 }
 
-.boton-descubrir-local {
+.boton-descubrir-gastronomia {
     display: inline-block; 
-    color: #7e8fa5;
+    color: #fff;
     padding: 8px 18px;
     border-radius: 20px;
     font-weight: 600;
@@ -88,110 +88,111 @@
     text-decoration: none; 
 }
 
-.boton-descubrir-local:hover {
-    background: #7e8fa580;
+.boton-descubrir-gastronomia:hover {
+    background: rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.7);
     transform: translateY(-2px);
     text-decoration: none; 
     color: #4c596a;
 }
 
-.separador-2 {
+.separador-3 {
     height: 600px; 
     width: 100%;
-    background-color: #7e8fa5;
-    background-image: url('../images/ola2.svg');
+    background-color: #fff;
+    background-image: url('../images/ola.svg');
     background-repeat: no-repeat;
     background-position: bottom center;
     background-size: 100% auto;
     margin-bottom: -1px;
 }
 
+
 @media (max-width: 1400px) {
-    .grilla-locales {
+    .grilla-gastronomia {
         gap: 80px;
         grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     }
-    .boton-descubrir-local{
+    .boton-descubrir-gastronomia{
         min-width: 115px; 
         font-size: 0.8rem;
     }
-    .tarjeta-local {
+    .tarjeta-gastronomia {
         flex: 0 0 clamp(170px, 20vw, 260px);
         min-width: 170px;
         max-width: 260px;
     }
-    .separador-2{
-        height: 500px; 
+    .separador-3{
+        height: 450px; 
     }
 }
 
 @media (max-width: 1200px) {
-    .grilla-locales {
+    .grilla-gastronomia {
         gap: 70px;
         grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     }
-    .boton-descubrir-local{
+    .boton-descubrir-gastronomia{
         min-width: 110px; 
         font-size: 0.7rem;
     }
-    .tarjeta-local {
+    .tarjeta-gastronomia {
         flex: 0 0 clamp(160px, 22vw, 240px);
         min-width: 160px;
         max-width: 240px;
     }
-    .separador-2{
+    .separador-3{
         height: 450px; 
     }
 }
 
 @media (max-width: 1050px) {
-    .grilla-locales {
+    .grilla-gastronomia {
         gap: 60px;
         grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     }
-    .separador-2{
+    .separador-3{
         height: 400px; 
     }
 }
 
 @media (max-width: 900px) {
-    .grilla-locales {
+    .grilla-gastronomia {
         gap: 50px;
         grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     }
-    .boton-descubrir-local{
+    .boton-descubrir-gastronomia{
         min-width: 100px; 
         font-size: 0.65rem;
     }
-    .tarjeta-local {
+    .tarjeta-gastronomia {
         flex: 0 0 clamp(140px, 30vw, 200px);
         min-width: 140px;
         max-width: 200px;
     }
-    .separador-2{
+    .separador-3{
         height: 350px; 
     }
 }
 
 @media (max-width: 700px) {
-    .grilla-locales {
+    .grilla-gastronomia {
         gap: 40px;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
-    .tarjeta-local {
+    .tarjeta-gastronomia {
         flex-direction: column; 
         justify-content: flex-start; 
         align-items: center; 
     }
-    .imagen-local {
+    .imagen-gastronomia {
         padding: 8px; 
         max-height: 60%; 
     }
-    .seccion-locales {
+    .seccion-gastronomia {
         padding: 1.5rem 0;
     }
-    .contenido-local {
+    .contenido-gastronomia {
         width: 100%;
         display: flex;
         justify-content: center; 
@@ -199,105 +200,106 @@
         padding: 8px 0 8px 0; 
         margin-top: -15px; 
     }
-    .boton-descubrir-local {
+    .boton-descubrir-gastronomia {
         min-width: auto; 
         max-width: 90%;
     }
-    .separador-2{
+    .separador-3{
         height: 300px; 
     }
 }
 
 @media (max-width: 600px) {
-    .grilla-locales {
+    .grilla-gastronomia {
         gap: 30px;
         grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     }
-    .tarjeta-local {
+    .tarjeta-gastronomia {
         flex: 0 0 85vw;
     }
-    .imagen-local {
+    .imagen-gastronomia {
         padding: 8px;
         max-height: 57%; 
     }
-    .seccion-locales {
+    .seccion-gastronomia {
         padding: 1.2rem 0;
     }
-    .contenido-local {
+    .contenido-gastronomia {
         padding: 8px 0; 
         margin-top: -14px;
     }
-    .boton-descubrir-local {
+    .boton-descubrir-gastronomia {
         font-size: 0.9rem;
         max-width: 85%;
     }
 }
 
 @media (max-width: 547px) {
-    .tarjeta-local {
+    .tarjeta-gastronomia {
         flex: 0 0 88vw;
     }
-    .imagen-local {
+    .imagen-gastronomia {
         padding: 7px;
         max-height: 56%; 
     }
-    .seccion-locales {
+    .seccion-gastronomia {
         padding: 1.1rem 0;
     }
-    .contenido-local {
+    .contenido-gastronomia {
         padding: 7px 0; 
         margin-top: -13px;
     }
-    .boton-descubrir-local {
+    .boton-descubrir-gastronomia {
         font-size: 0.85rem;
         max-width: 83%;
     }
 }
 
 @media (max-width: 500px) {
-    .tarjeta-local {
+    .tarjeta-gastronomia {
         flex: 0 0 92vw;
     }
-    .imagen-local {
+    .imagen-gastronomia {
         padding: 6px;
         max-height: 55%; 
     }
-    .seccion-locales {
+    .seccion-gastronomia {
         padding: 1rem 0;
     }
-    .contenido-local {
+    .contenido-gastronomia {
         padding: 6px 0; 
         margin-top: -12px;
     }
-    .boton-descubrir-local {
+    .boton-descubrir-gastronomia {
         font-size: 0.85rem;
         max-width: 80%;
     }
-    .separador-2{
+    .separador-3{
         height: 250px; 
     }
 }
 
 @media (max-width: 374px) {
-    .tarjeta-local {
+    .tarjeta-gastronomia {
         flex: 0 0 95vw;
     }
-    .imagen-local {
+    .imagen-gastronomia {
         padding: 5px;
         max-height: 50%; 
     }
-    .seccion-locales {
+    .seccion-gastronomia {
         padding: 0.8rem 0;
     }
-    .contenido-local {
+    .contenido-gastronomia {
         padding: 5px 0; 
         margin-top: -10px;
     }
-    .boton-descubrir-local {
+    .boton-descubrir-gastronomia {
         font-size: 0.8rem;
         max-width: 75%;
     }
-    .separador{
+    .separador-3{
         height: 120px;
     }
 }
+

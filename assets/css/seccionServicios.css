@@ -1,0 +1,136 @@
+.seccion-servicios {
+    background-color: #7e8fa5;
+    color: #fff;
+    width: 100%;
+}
+
+.titulo-seccion-servicios {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'AsapCondensedSemiBold', sans-serif;
+}
+
+.tarjeta-servicio {
+    border: none;
+    overflow: hidden;
+    background-color: #fff;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding-bottom: 1.5rem; 
+}
+
+.imagen-servicio {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    aspect-ratio: 4 / 2.8;
+    margin-top: 0.3rem; 
+}
+
+.imagen-servicio img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    transform: scale(0.95); 
+}
+
+.contenido-servicio {
+    z-index: 3;
+    padding: 0.8rem 1rem 0.5rem 1rem;
+    margin-top: -0.4rem; 
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    text-align: left;
+    color: #7e8fa5;
+}
+
+.contenido-servicio h5 {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+
+.contenido-servicio p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.separador-4 {
+    height: 600px; 
+    width: 100%;
+    background-color: #7e8fa5;
+    background-image: url('../images/ola2.svg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 100% auto;
+    margin-bottom: -1px;
+}
+
+@media (max-width: 768px) {
+    .imagen-servicio {
+        aspect-ratio: 4 / 2.5;
+    }
+
+    .imagen-servicio img {
+        transform: scale(0.9);
+    }
+
+    .contenido-servicio {
+        padding: 0.6rem 0.8rem;
+        margin-top: -0.3rem;
+    }
+
+    .contenido-servicio p {
+        font-size: 0.9rem;
+    }
+}
+
+
+@media (max-width: 1400px) {
+    .separador-4{
+        height: 450px; 
+    }
+}
+
+@media (max-width: 1200px) {
+    .separador-4{
+        height: 450px; 
+    }
+}
+
+@media (max-width: 1050px) {
+    .separador-4{
+        height: 400px; 
+    }
+}
+
+@media (max-width: 900px) {
+    .separador-4{
+        height: 350px; 
+    }
+}
+
+@media (max-width: 700px) {
+    .separador-4{
+        height: 300px; 
+    }
+}
+
+@media (max-width: 500px) {
+    .separador-4{
+        height: 250px; 
+    }
+}
+
+@media (max-width: 374px) {
+    .separador-4{
+        height: 120px;
+    }
+}
+
