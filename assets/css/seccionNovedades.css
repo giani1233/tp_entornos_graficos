@@ -44,6 +44,18 @@
     margin-bottom: 1.2rem;
 }
 
+.separador-5 {
+    height: 600px; 
+    width: 100%;
+    background-color: #fff;
+    background-image: url('../images/ola.svg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 100% auto;
+    margin-bottom: -1px;
+}
+
+
 @media (max-width: 768px) {
     .seccion-novedades {
         padding: 3rem 0 2rem 0;

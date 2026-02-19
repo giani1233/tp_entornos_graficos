@@ -93,8 +93,8 @@
     <h2 class="titulo-seccion-promociones mb-4 text-center">Promociones del día</h2>
     <div class="contenedor-seccion-promociones">
         <?php if (empty($promociones)): ?>
-            <div class="alert alert-info text-center">
-                <h4>No hay promociones disponibles para hoy</h4>
+            <div class="text-center" style="opacity: 0.7;">
+                <p>No hay promociones disponibles para hoy</p>
             </div>
         <?php else: ?>
             <div class="contenedor-promociones d-flex align-items-center position-relative">
@@ -240,7 +240,7 @@
                 <p>No hay novedades disponibles en este momento.</p>
             </div>
         <?php else: ?>
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4 justify-content-left">
                 <?php foreach ($novedades as $novedad): ?>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="tarjeta-novedad">
@@ -253,6 +253,44 @@
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
+    </div>
+</section>
+
+<div class="separador-5"></div>
+
+<section class="seccion-ubicacion" id="ubicacion">
+    <div class="container">
+        <h2 class="titulo-seccion-ubicacion">Ubicación</h2>
+        <div class="ubicacion-contenedor">
+            <div class="ubicacion-mapa">
+                <img src="assets/images/mapa.png" alt="Mapa de ubicación Rio Shopping">
+            </div>
+            <div class="ubicacion-info">
+                <div class="ubicacion-bloque">
+                    <div class="ubicacion-bloque-titulo">En colectivo</div>
+                    <ul class="ubicacion-lista">
+                        <li><strong>102</strong> | bandera negra y roja</li>
+                        <li><strong>103</strong> | bandera negra y roja (Zona sur: San Martin - Corrientes - Salta)</li>
+                        <li><strong>107</strong> | (Av. Pellegrini - Corrientes)</li>
+                        <li><strong>113</strong> | (27 de Febrero - Cafferata - Santa Fe)</li>
+                        <li><strong>143</strong> | bandera roja (por Av. Avellaneda) y bandera negra</li>
+                        <li><strong>153</strong> | (Allende)</li>
+                        <li><strong>35 / 9</strong> | bandera roja (Av. Rondeau) y bandera negra (Allende)</li>
+                        <li><strong>Exp.</strong> | (Palladini / Baigorria) (Santa Fe - Corrientes - Cafferata / Puerto Gral. San Martin)</li>
+                    </ul>
+                </div>
+                <div class="ubicacion-bloque">
+                    <div class="ubicacion-bloque-titulo">En auto</div>
+                    <p class="ubicacion-descripcion">
+                        Rio Shopping está ubicado en una zona privilegiada de la ciudad de Rosario, muy cerca del río Paraná. Su emplazamiento estratégico atrae no solo a los residentes vecinos, sino a personas que viven en una extensa área de influencia, ya que posee amplias y rápidas vías de acceso.
+                    </p>
+                    <span class="ubicacion-direccion">
+                        <strong> Ubicación: </strong> Nansen 323 — Rosario, Santa Fe
+                    </span>
+                </div>
+
+            </div>
+        </div>
     </div>
 </section>
 
