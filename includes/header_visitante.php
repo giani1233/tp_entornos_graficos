@@ -12,6 +12,7 @@
     <link href="assets/css/seccionGastronomia.css" rel="stylesheet">
     <link href="assets/css/local.css" rel="stylesheet">
     <link href="assets/css/seccionServicios.css" rel="stylesheet">
+    <link href="assets/css/seccionNovedades.css" rel="stylesheet">
 </head>
 <body class="<?php echo $bodyClass ?? ''; ?>">
     <nav class="navbar navbar-expand-lg navbar-light" id="navbar-visitante">
@@ -28,6 +29,7 @@
                     <a class="nav-item nav-link" href="#locales">Locales</a>
                     <a class="nav-item nav-link" href="#gastronomia">Gastronomía</a>
                     <a class="nav-item nav-link" href="#servicios">Servicios</a>
+                    <a class="nav-item nav-link" href="#novedades">Novedades</a>
                     <a class="nav-item nav-link" href="#">Ingresar</a>
                 </div>
                 <input type="text" id="barra-busqueda" placeholder="Buscar..." style="display:none; margin-left:1rem; max-width:200px;" class="form-control">

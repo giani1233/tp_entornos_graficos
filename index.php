@@ -70,6 +70,19 @@
             $servicios[] = $fila;
         }
     }
+
+    $sql_novedades = "SELECT * FROM novedades
+                      WHERE (tipoUsuario = 'cliente' OR tipoUsuario IS NULL)
+                      AND fechaDesdeNovedad <= CURDATE()
+                      AND fechaHastaNovedad >= CURDATE()
+                      ORDER BY fechaDesdeNovedad DESC";
+    $resultado_novedades = mysqli_query($conexion, $sql_novedades);
+    $novedades = [];
+    if ($resultado_novedades) {
+        while ($fila = mysqli_fetch_assoc($resultado_novedades)) {
+            $novedades[] = $fila;
+        }
+    }
 ?>
 
 <div class="contenedor-edificio">
@@ -218,5 +231,29 @@
 
 <div class="separador-4"></div>
 
+<section class="seccion-novedades" id="novedades">
+    <div class="container">
+        <h2 class="titulo-seccion-novedades">Novedades</h2>
+
+        <?php if (empty($novedades)): ?>
+            <div class="text-center" style="opacity: 0.7;">
+                <p>No hay novedades disponibles en este momento.</p>
+            </div>
+        <?php else: ?>
+            <div class="row g-4 justify-content-center">
+                <?php foreach ($novedades as $novedad): ?>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="tarjeta-novedad">
+                            <div class="novedad-icono">📢</div>
+                            <p class="novedad-texto">
+                                <?php echo htmlspecialchars($novedad['textoNovedad']); ?>
+                            </p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</section>
 
 <?php include 'includes/footer.php'; ?>
