@@ -260,3 +260,11 @@
     }
 }
 
+#ofertas,
+#locales,
+#gastronomia,
+#servicios,
+#novedades,
+#ubicacion {
+    scroll-margin-top: 80px;
+}
