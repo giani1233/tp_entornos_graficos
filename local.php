@@ -24,6 +24,39 @@ if (!$resultado || mysqli_num_rows($resultado) == 0) {
 }
 
 $local = mysqli_fetch_assoc($resultado);
+
+$diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+$diaActual  = $diasSemana[date('N') - 1];
+$promociones_local = [];
+
+if (isset($_SESSION['codUsuario']) && $_SESSION['tipoUsuario'] == 'cliente') {
+    $categoriaCliente = $_SESSION['categoriaCliente'];
+    $sql_promos = "SELECT codPromo, textoPromo FROM promociones
+                   WHERE codLocal = $codLocal
+                   AND estadoPromo = 'Aprobada'
+                   AND fechaDesdePromo <= CURDATE()
+                   AND fechaHastaPromo >= CURDATE()
+                   AND JSON_CONTAINS(diasSemana, '\"$diaActual\"')
+                   AND (
+                       categoriaCliente = 'Inicial'
+                       OR (categoriaCliente = 'Medium' AND '$categoriaCliente' IN ('Medium', 'Premium'))
+                       OR (categoriaCliente = 'Premium' AND '$categoriaCliente' = 'Premium')
+                   )
+                   ORDER BY fechaDesdePromo DESC";
+} else {
+    $sql_promos = "SELECT codPromo, textoPromo FROM promociones
+                   WHERE codLocal = $codLocal
+                   AND estadoPromo = 'Aprobada'
+                   AND fechaDesdePromo <= CURDATE()
+                   AND fechaHastaPromo >= CURDATE()
+                   AND JSON_CONTAINS(diasSemana, '\"$diaActual\"')
+                   ORDER BY fechaDesdePromo DESC";
+}
+
+$resultado_promos = mysqli_query($conexion, $sql_promos);
+if ($resultado_promos) {
+    $promociones_local = mysqli_fetch_all($resultado_promos, MYSQLI_ASSOC);
+}
 ?>
 
 <div class="container my-5">
@@ -46,6 +79,31 @@ $local = mysqli_fetch_assoc($resultado);
                     <p class="card-text"><?php echo htmlspecialchars($local['informacionLocal']); ?></p>
                     <p class="card-text"><strong>Ubicación:</strong> <?php echo htmlspecialchars($local['ubicacionLocal']); ?></p>
                     <p class="card-text"><strong>Rubro:</strong> <?php echo htmlspecialchars($local['rubroLocal']); ?></p>
+
+                    <?php if (!empty($promociones_local)): ?>
+                        <hr>
+                        <h5 class="mb-3">Promociones disponibles hoy</h5>
+                        <ul class="list-group list-group-flush mb-3">
+                            <?php foreach ($promociones_local as $promo): ?>
+                                <li class="list-group-item">
+                                    <a href="promocion.php?codPromo=<?= $promo['codPromo'] ?>" class="promosLocal">
+                                        <?= htmlspecialchars($promo['textoPromo']) ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php else: ?>
+                        <hr>
+                        <p class="text-center">No hay promociones disponibles hoy para este local.</p>
+                    <?php endif; ?>
+
+                    <?php if (isset($_SESSION['codUsuario']) && $_SESSION['tipoUsuario'] == 'cliente'): ?>
+                        <div class="mt-2 text-center">
+                            <a href="consumir_promo.php?codLocal=<?= $codLocal ?>" class="btn-consumir">
+                                Consumir Promoción
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

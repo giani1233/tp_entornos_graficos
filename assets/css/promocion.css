@@ -2,3 +2,30 @@
 body.pagina-promocion {
     background: #7e8fa5;
 }
+
+.btn-consumir {
+    background-color: #7e8fa5;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 24px;
+    font-family: 'AsapCondensedSemiBold', sans-serif;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.btn-consumir:hover {
+    background-color: #4c596a;
+    color: #ffffff;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+@media (max-width: 992px) {
+    .btn-consumir {
+        margin-bottom: 10px;
+    }
+}

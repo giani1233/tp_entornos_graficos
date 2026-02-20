@@ -48,6 +48,14 @@ $promo = mysqli_fetch_assoc($resultado);
                     <p class="card-text"><strong>Hasta:</strong> <?php echo htmlspecialchars($promo['fechaHastaPromo']); ?></p>
                     <p class="card-text"><strong>Promoción:</strong> <?php echo htmlspecialchars($promo['textoPromo']); ?></p>
                 </div>
+                <?php if (isset($_SESSION['codUsuario']) && $_SESSION['tipoUsuario'] == 'cliente'): ?>
+                    <div class="mt-4">
+                        <a href="consumir_promo.php?codLocal=<?= $promo['codLocal'] ?>&codPromo=<?= $promo['codPromo'] ?>" 
+                        class="btn-consumir">
+                            Consumir Promoción
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>    

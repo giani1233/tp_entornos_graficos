@@ -3,6 +3,16 @@
     include 'includes/header_visitante.php';
     include 'includes/conexion_db.php';
 
+    if (isset($_SESSION['codUsuario'])) {
+        if ($_SESSION['tipoUsuario'] == 'admin') {
+            header('Location: admin/index_admin.php');
+            exit;
+        } elseif ($_SESSION['tipoUsuario'] == 'dueno') {
+            header('Location: dueno/index_dueno.php');
+            exit;
+        }
+    }
+
     $diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
     $diaActual = $diasSemana[date('N') - 1];
 
@@ -17,8 +27,8 @@
                 AND JSON_CONTAINS(p.diasSemana, '\"$diaActual\"')
                 AND (
                     p.categoriaCliente = 'Inicial'
-                    OR p.categoriaCliente = 'Medium' and ? IN ('Medium', 'Premium')
-                    OR p.categoriaCliente = 'Premium' and ? = 'Premium'
+                    OR p.categoriaCliente = 'Medium' and '$categoriaCliente' IN ('Medium', 'Premium')
+                    OR p.categoriaCliente = 'Premium' and '$categoriaCliente' = 'Premium'
                 )
                 ORDER BY p.fechaDesdePromo DESC";
     $resultado = mysqli_query($conexion, $sql);
@@ -69,11 +79,25 @@
         }
     }
 
-    $sql_novedades = "SELECT * FROM novedades
-                      WHERE (tipoUsuario = 'cliente' OR tipoUsuario IS NULL)
-                      AND fechaDesdeNovedad <= CURDATE()
-                      AND fechaHastaNovedad >= CURDATE()
-                      ORDER BY fechaDesdeNovedad DESC";
+    if (isset($_SESSION['codUsuario']) && $_SESSION['tipoUsuario'] == 'cliente') {
+        $categoriaCliente = $_SESSION['categoriaCliente'];
+        $sql_novedades = "SELECT * FROM novedades
+                        WHERE (tipoUsuario = 'cliente' OR tipoUsuario IS NULL)
+                        AND fechaDesdeNovedad <= CURDATE()
+                        AND fechaHastaNovedad >= CURDATE()
+                        AND (
+                            categoriaCliente = 'Inicial'
+                            OR (categoriaCliente = 'Medium' AND '$categoriaCliente' IN ('Medium', 'Premium'))
+                            OR (categoriaCliente = 'Premium' AND '$categoriaCliente' = 'Premium')
+                        )
+                        ORDER BY fechaDesdeNovedad DESC";
+    } else {
+        $sql_novedades = "SELECT * FROM novedades
+                        WHERE (tipoUsuario = 'cliente' OR tipoUsuario IS NULL)
+                        AND fechaDesdeNovedad <= CURDATE()
+                        AND fechaHastaNovedad >= CURDATE()
+                        ORDER BY fechaDesdeNovedad DESC";
+    }
     $resultado_novedades = mysqli_query($conexion, $sql_novedades);
     $novedades = [];
     if ($resultado_novedades) {

@@ -15,6 +15,7 @@
     <link href="assets/css/seccionServicios.css" rel="stylesheet">
     <link href="assets/css/seccionNovedades.css" rel="stylesheet">
     <link href="assets/css/seccionUbicacion.css" rel="stylesheet">
+    <link href="assets/css/consumirPromo.css" rel="stylesheet">
 </head>
 <body class="<?php echo $bodyClass ?? ''; ?>">
     <nav class="navbar navbar-expand-lg navbar-light" id="navbar-visitante">
@@ -27,12 +28,15 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav" id="navbar-items">
-                    <a class="nav-item nav-link" href="#ofertas">Ofertas</a>
-                    <a class="nav-item nav-link" href="#locales">Locales</a>
-                    <a class="nav-item nav-link" href="#gastronomia">Gastronomía</a>
-                    <a class="nav-item nav-link" href="#servicios">Servicios</a>
-                    <a class="nav-item nav-link" href="#novedades">Novedades</a>
-                    <a class="nav-item nav-link" href="#ubicacion">Ubicación</a>
+                    <a class="nav-item nav-link" href="index.php#ofertas">Ofertas</a>
+                    <a class="nav-item nav-link" href="index.php#locales">Locales</a>
+                    <a class="nav-item nav-link" href="index.php#gastronomia">Gastronomía</a>
+                    <a class="nav-item nav-link" href="index.php#servicios">Servicios</a>
+                    <a class="nav-item nav-link" href="index.php#novedades">Novedades</a>
+                    <a class="nav-item nav-link" href="index.php#ubicacion">Ubicación</a>
+                    <?php if (isset($_SESSION['codUsuario']) && $_SESSION['tipoUsuario'] == 'cliente'): ?>
+                        <a class="nav-item nav-link" href="consumir_promo.php">Comprar</a>
+                    <?php endif; ?>
                     <?php if (isset($_SESSION['codUsuario'])): ?>
                         <a class="nav-item nav-link" id="btn-cerrar-sesion" href="logout.php" 
                         onclick="return confirm('¿Está seguro que desea cerrar sesión?')">

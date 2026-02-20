@@ -15,6 +15,7 @@ include 'includes/header.php';
                             <?php
                                 $error = $_GET['error'];
                                 if ($error == 'credenciales') echo 'Email o contraseña incorrectos.';
+                                elseif ($error == 'cuenta_inactiva') echo 'Tu cuenta está pendiente de aprobación.';
                             ?>
                         </div>
                     <?php endif; ?>

@@ -26,6 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: login.php?error=credenciales');
         exit();
     }
+
+    if ($usuario['estadoUsuario'] != 'Activo') {
+        header('Location: login.php?error=cuenta_inactiva');
+        exit();
+    }
     
     $_SESSION['codUsuario']      = $usuario['codUsuario'];
     $_SESSION['nombreUsuario']   = $usuario['nombreUsuario'];
@@ -40,9 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_close($conexion);
 
     if ($usuario['tipoUsuario'] == 'admin') {
-        header('Location: admin/index.php');
+        header('Location: admin/index_admin.php');
     } elseif ($usuario['tipoUsuario'] == 'dueño') {
-        header('Location: dueno/index.php');
+        header('Location: dueno/index_dueno.php');
     } else {
         header('Location: index.php');
     }

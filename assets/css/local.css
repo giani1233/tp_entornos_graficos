@@ -2,3 +2,15 @@
 body.pagina-local {
     background: #7e8fa5;
 }
+
+.promosLocal {
+    color: #7e8fa5;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.promosLocal:hover {
+    color: #4c596a;
+    text-decoration: none;
+}
