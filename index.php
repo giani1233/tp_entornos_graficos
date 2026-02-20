@@ -1,8 +1,6 @@
 <?php 
 
     include 'includes/header_visitante.php';
-
-    session_start();
     include 'includes/conexion_db.php';
 
     $diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];

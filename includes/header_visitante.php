@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +33,14 @@
                     <a class="nav-item nav-link" href="#servicios">Servicios</a>
                     <a class="nav-item nav-link" href="#novedades">Novedades</a>
                     <a class="nav-item nav-link" href="#ubicacion">Ubicación</a>
-                    <a class="nav-item nav-link" href="#">Ingresar</a>
+                    <?php if (isset($_SESSION['codUsuario'])): ?>
+                        <a class="nav-item nav-link" id="btn-cerrar-sesion" href="logout.php" 
+                        onclick="return confirm('¿Está seguro que desea cerrar sesión?')">
+                        Cerrar sesión
+                        </a>
+                    <?php else: ?>
+                        <a class="nav-item nav-link" href="login.php">Ingresar</a>
+                    <?php endif; ?>
                 </div>
                 <input type="text" id="barra-busqueda" placeholder="Buscar..." style="display:none; margin-left:1rem; max-width:200px;" class="form-control">
             </div>

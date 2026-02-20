@@ -23,8 +23,8 @@
 }
 
 .ubicacion-mapa {
-    flex: 0 0 340px;
-    max-width: 380px;
+    flex: 0 0 450px;
+    max-width: 450px;
     aspect-ratio: 1 / 1.25;
     overflow: hidden;
     background-color: #7e8fa5;

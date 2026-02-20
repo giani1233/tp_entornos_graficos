@@ -260,6 +260,11 @@
     }
 }
 
+#btn-cerrar-sesion {
+    color: #b93535 !important;
+    font-weight: 600;
+}
+
 #ofertas,
 #locales,
 #gastronomia,

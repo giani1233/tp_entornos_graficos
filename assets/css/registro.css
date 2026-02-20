@@ -12,6 +12,12 @@
     font-style: normal;
 }
 
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 #form-container, 
 #form-container *, .opciones {
