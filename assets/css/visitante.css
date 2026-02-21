@@ -53,6 +53,10 @@
     height: auto;
 }
 
+#logo-header:hover {
+    transform: scale(1.1);
+}
+
 #logo-reducido {
     display: none;
     width: 3.5vw;
@@ -71,7 +75,17 @@
     height: 24px;
 }
 
+#icono-busqueda:hover {
+    transform: scale(1.1);
+}
+
 @media (min-width: 992px) {
+
+    #navbar-visitante .nav-link:hover {
+        color: #343a42;
+        transform: scale(1.1);
+    }
+
     #navbar-visitante .container-fluid {
         display: grid;
         grid-template-columns: auto 1fr auto;
@@ -263,6 +277,10 @@
 #btn-cerrar-sesion {
     color: #b93535 !important;
     font-weight: 600;
+}
+
+#btn-cerrar-sesion:hover {
+    color: #850000 !important;
 }
 
 #ofertas,
