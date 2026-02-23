@@ -1,4 +1,6 @@
 <?php
+
+$bodyClass = 'pagina-inicio-dueno';
 include '../includes/sesion.php';
 verificarSesion();
 verificarRol('dueño');

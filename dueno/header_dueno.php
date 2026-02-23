@@ -7,6 +7,8 @@
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet"> 
     <link href="../assets/css/dueno.css" rel="stylesheet"> 
     <link href="../assets/css/indexDueno.css" rel="stylesheet"> 
+    <link href="../assets/css/gestionarPromociones.css" rel="stylesheet">
+    <link href="../assets/css/agregarPromocion.css" rel="stylesheet">
 </head>
 <body class="<?php echo $bodyClass ?? ''; ?>">
     <nav class="navbar navbar-expand-lg navbar-light" id="navbar-dueno">
@@ -19,10 +21,9 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarNavDueno">
                 <div class="navbar-nav" id="navbar-items-dueno">
-                    <a class="nav-item nav-link" href="index_dueno.php">Inicio</a>
-                    <a class="nav-item nav-link" href="mis_promociones.php">Gestionar Promociones</a>
-                    <a class="nav-item nav-link" href="solicitudes.php">Gestionar Solicitudes</a>
-                    <a class="nav-item nav-link" href="mi_local.php">Reportes</a>
+                    <a class="nav-item nav-link" href="gestionar_promociones.php">Gestionar Promociones</a>
+                    <a class="nav-item nav-link" href="gestionar_solicitudes.php">Gestionar Solicitudes</a>
+                    <a class="nav-item nav-link" href="reportes.php">Reportes</a>
                     <a class="nav-item nav-link" id="btn-cerrar-sesion-dueno" href="../logout.php"
                         onclick="return confirm('¿Está seguro que desea cerrar sesión?')">
                         Cerrar sesión
