@@ -3,7 +3,7 @@
 include 'includes/header.php'; 
 include 'includes/conexion_db.php';
 
-$sql_locales = 'SELECT codLocal, nombreLocal FROM locales WHERE codUsuario IS NULL AND activo = 1';
+$sql_locales = 'SELECT codLocal, nombreLocal FROM locales WHERE codUsuario IS NULL AND activo = 1 ORDER BY nombreLocal';
 $resultado_locales = mysqli_query($conexion, $sql_locales);
 $locales = mysqli_fetch_all($resultado_locales, MYSQLI_ASSOC);
 

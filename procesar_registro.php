@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (mysqli_num_rows($resultado) > 0) {
             die('Error: El local ya tiene un dueño asignado. ');
         } else {
-            $sql = "INSERT INTO usuarios (emailUsuario, claveUsuario, tipoUsuario, categoriaCliente, estadoUsuario, nombreUsuario, apellidoUsuario)
-                    VALUES ('$email', '$password', '$tipo', NULL, 'Pendiente', '$nombre', '$apellido')";
+            $sql = "INSERT INTO usuarios (emailUsuario, claveUsuario, tipoUsuario, categoriaCliente, estadoUsuario, nombreUsuario, apellidoUsuario, codLocalSeleccionado)
+                    VALUES ('$email', '$password', '$tipo', NULL, 'Pendiente', '$nombre', '$apellido', '$id_local')";
         }
     }
 

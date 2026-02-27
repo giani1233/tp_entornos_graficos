@@ -50,14 +50,14 @@ mysqli_close($conexion);
         <form method="GET" action="reportes.php" class="form-busqueda-reporte">
             <input type="hidden" name="orden" value="<?= $orden ?>">
             <input type="text"
-                   name="busqueda"
-                   class="input-busqueda-reporte"
-                   placeholder="Buscar promoción..."
-                   value="<?= htmlspecialchars($busqueda) ?>">
+                    name="busqueda"
+                    class="input-busqueda-reporte"
+                    placeholder="Buscar promoción..."
+                    value="<?= htmlspecialchars($busqueda) ?>">
             <button type="submit" class="btn-dueno">Buscar</button>
         </form>
         <a href="reportes.php?orden=<?= $ordenInverso ?>&busqueda=<?= urlencode($busqueda) ?>"
-           class="btn-orden">
+            class="btn-orden">
             Usos:  <?= $orden == 'DESC' ? ' ↑ Asc' : ' ↓ Desc' ?>
         </a>
     </div>
