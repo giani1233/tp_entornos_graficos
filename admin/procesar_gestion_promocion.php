@@ -1,4 +1,5 @@
 <?php
+
 include '../includes/sesion.php';
 verificarSesion();
 verificarRol('admin');
@@ -24,4 +25,5 @@ mysqli_close($conexion);
 
 header('Location: gestionar_promociones_admin.php');
 exit;
+
 ?>

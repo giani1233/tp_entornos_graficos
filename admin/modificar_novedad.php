@@ -1,4 +1,5 @@
 <?php
+
 $bodyClass = 'pagina-agregar-local';
 include '../includes/sesion.php';
 verificarSesion();
@@ -23,6 +24,7 @@ if (!$resultado || mysqli_num_rows($resultado) == 0) {
 
 $novedad = mysqli_fetch_assoc($resultado);
 mysqli_close($conexion);
+
 ?>
 
 <div class="container mt-5" id="form-container">
@@ -42,18 +44,15 @@ mysqli_close($conexion);
                         <input type="hidden" name="codNovedad" value="<?= $codNovedad ?>">
                         <div class="mb-3">
                             <label for="textoNovedad" class="form-label">Texto:</label>
-                            <textarea class="form-control" id="textoNovedad" name="textoNovedad"
-                                      rows="3" required><?= htmlspecialchars($novedad['textoNovedad']) ?></textarea>
+                            <textarea class="form-control" id="textoNovedad" name="textoNovedad" rows="3" required><?= htmlspecialchars($novedad['textoNovedad']) ?></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="fechaDesdeNovedad" class="form-label">Fecha desde:</label>
-                            <input type="date" class="form-control" id="fechaDesdeNovedad" name="fechaDesdeNovedad"
-                                   value="<?= htmlspecialchars($novedad['fechaDesdeNovedad']) ?>" required>
+                            <input type="date" class="form-control" id="fechaDesdeNovedad" name="fechaDesdeNovedad" value="<?= htmlspecialchars($novedad['fechaDesdeNovedad']) ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="fechaHastaNovedad" class="form-label">Fecha hasta:</label>
-                            <input type="date" class="form-control" id="fechaHastaNovedad" name="fechaHastaNovedad"
-                                   value="<?= htmlspecialchars($novedad['fechaHastaNovedad']) ?>" required>
+                            <input type="date" class="form-control" id="fechaHastaNovedad" name="fechaHastaNovedad" value="<?= htmlspecialchars($novedad['fechaHastaNovedad']) ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="categoriaCliente" class="form-label">Categoría de cliente:</label>

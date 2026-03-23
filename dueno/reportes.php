@@ -9,7 +9,9 @@ include '../includes/conexion_db.php';
 
 $codUsuario = $_SESSION['codUsuario'];
 
-$sql_local = "SELECT codLocal FROM locales WHERE codUsuario = $codUsuario";
+$sql_local = "SELECT codLocal 
+              FROM locales 
+              WHERE codUsuario = $codUsuario";
 $resultado_local = mysqli_query($conexion, $sql_local);
 $local = mysqli_fetch_assoc($resultado_local);
 $codLocal = $local['codLocal'];
@@ -49,11 +51,7 @@ mysqli_close($conexion);
     <div class="barra-reportes">
         <form method="GET" action="reportes.php" class="form-busqueda-reporte">
             <input type="hidden" name="orden" value="<?= $orden ?>">
-            <input type="text"
-                    name="busqueda"
-                    class="input-busqueda-reporte"
-                    placeholder="Buscar promoción..."
-                    value="<?= htmlspecialchars($busqueda) ?>">
+            <input type="text" name="busqueda" class="input-busqueda-reporte" placeholder="Buscar promoción..." value="<?= htmlspecialchars($busqueda) ?>">
             <button type="submit" class="btn-dueno">Buscar</button>
         </form>
         <a href="reportes.php?orden=<?= $ordenInverso ?>&busqueda=<?= urlencode($busqueda) ?>"

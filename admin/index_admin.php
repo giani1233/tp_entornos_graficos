@@ -10,11 +10,9 @@ include 'header_admin.php';
 
 <div class="contenedor-inicio-admin">
     <div class="layout-inicio-admin">
-
         <div class="imagen-admin">
             <img src="../assets/images/icono.svg" alt="Rio Shopping">
         </div>
-
         <div class="info-admin">
             <h1 class="titulo-admin">Rio Shopping</h1>
             <div class="botones-admin">
@@ -26,7 +24,6 @@ include 'header_admin.php';
                 <a href="reportes_admin.php" class="btn-admin">Reportes</a>
             </div>
         </div>
-
     </div>
 </div>
 

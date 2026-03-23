@@ -24,6 +24,7 @@ if (!$resultado || mysqli_num_rows($resultado) == 0) {
 
 $local = mysqli_fetch_assoc($resultado);
 mysqli_close($conexion);
+
 ?>
 
 <div class="container mt-5" id="form-container">
@@ -44,33 +45,27 @@ mysqli_close($conexion);
                         <div class="mb-3">
                             <label class="form-label">Logo actual:</label><br>
                             <?php if (!empty($local['imagen'])): ?>
-                                <img src="../assets/images/locales/<?= htmlspecialchars($local['imagen']) ?>"
-                                     alt="Logo actual"
-                                     style="width:80px; height:80px; object-fit:cover; border-radius:10px; margin-bottom:0.5rem;">
+                                <img src="../assets/images/locales/<?= htmlspecialchars($local['imagen']) ?>" alt="Logo actual" style="width:80px; height:80px; object-fit:cover; border-radius:10px; margin-bottom:0.5rem;">
                             <?php else: ?>
-                                <span style="opacity:0.6; font-size:0.9rem;">Sin imagen</span>
+                                <span>Sin imagen</span>
                             <?php endif; ?>
                             <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
                         </div>
                         <div class="mb-3">
                             <label for="nombreLocal" class="form-label">Nombre:</label>
-                            <input type="text" class="form-control" id="nombreLocal" name="nombreLocal"
-                                   value="<?= htmlspecialchars($local['nombreLocal']) ?>" required>
+                            <input type="text" class="form-control" id="nombreLocal" name="nombreLocal" value="<?= htmlspecialchars($local['nombreLocal']) ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="informacionLocal" class="form-label">Información:</label>
-                            <textarea class="form-control" id="informacionLocal" name="informacionLocal"
-                                      rows="3" required><?= htmlspecialchars($local['informacionLocal']) ?></textarea>
+                            <textarea class="form-control" id="informacionLocal" name="informacionLocal" rows="3" required><?= htmlspecialchars($local['informacionLocal']) ?></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="ubicacionLocal" class="form-label">Ubicación:</label>
-                            <input type="text" class="form-control" id="ubicacionLocal" name="ubicacionLocal"
-                                   value="<?= htmlspecialchars($local['ubicacionLocal']) ?>" required>
+                            <input type="text" class="form-control" id="ubicacionLocal" name="ubicacionLocal" value="<?= htmlspecialchars($local['ubicacionLocal']) ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="rubroLocal" class="form-label">Rubro:</label>
-                            <input type="text" class="form-control" id="rubroLocal" name="rubroLocal"
-                                   value="<?= htmlspecialchars($local['rubroLocal']) ?>" required>
+                            <input type="text" class="form-control" id="rubroLocal" name="rubroLocal" value="<?= htmlspecialchars($local['rubroLocal']) ?>" required>
                         </div>
                         <div class="d-grid mt-4">
                             <button type="submit" class="btn btn-primary btn-lg" id="btn-registrarse">

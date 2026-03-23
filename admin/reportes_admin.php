@@ -1,4 +1,5 @@
 <?php
+
 include '../includes/sesion.php';
 verificarSesion();
 verificarRol('admin');
@@ -27,14 +28,11 @@ switch ($filtro) {
         break;
 }
 
-$sql = "SELECT l.codLocal, l.nombreLocal,
-               COUNT(DISTINCT p.codPromo) AS totalPromociones,
-               COUNT(up.codUso) AS cuponesCanjeados,
-               (
-                   SELECT COUNT(*) FROM promociones p2
-                   WHERE p2.codLocal = l.codLocal
-                   AND (SELECT COUNT(*) FROM uso_promociones up2 WHERE up2.codPromo = p2.codPromo) = 0
-               ) AS promosSinUso
+$sql = "SELECT l.codLocal, l.nombreLocal, COUNT(DISTINCT p.codPromo) AS totalPromociones, COUNT(up.codUso) AS cuponesCanjeados, (
+                                                                                                                                    SELECT COUNT(*) FROM promociones p2
+                                                                                                                                    WHERE p2.codLocal = l.codLocal
+                                                                                                                                    AND (SELECT COUNT(*) FROM uso_promociones up2 WHERE up2.codPromo = p2.codPromo) = 0
+                                                                                                                                ) AS promosSinUso
         FROM locales l
         LEFT JOIN promociones p ON l.codLocal = p.codLocal
         LEFT JOIN uso_promociones up ON p.codPromo = up.codPromo
@@ -50,6 +48,7 @@ if ($resultado) {
     }
 }
 mysqli_close($conexion);
+
 ?>
 
 <div class="contenedor-gestion-admin">
@@ -59,24 +58,17 @@ mysqli_close($conexion);
     <div class="barra-reportes-admin">
         <form method="GET" action="reportes_admin.php" class="form-busqueda-reporte-admin">
             <input type="hidden" name="filtro" value="<?= htmlspecialchars($filtro) ?>">
-            <input type="text"
-                   name="busqueda"
-                   class="input-busqueda-reporte-admin"
-                   placeholder="Buscar local..."
-                   value="<?= htmlspecialchars($busqueda) ?>">
+            <input type="text" name="busqueda" class="input-busqueda-reporte-admin" placeholder="Buscar local..." value="<?= htmlspecialchars($busqueda) ?>">
             <button type="submit" class="btn-admin">Buscar</button>
         </form>
         <div class="filtros-admin">
-            <a href="reportes_admin.php?filtro=cantidad&busqueda=<?= urlencode($busqueda) ?>"
-               class="btn-filtro-admin <?= $filtro == 'cantidad' ? 'btn-filtro-activo' : '' ?>">
+            <a href="reportes_admin.php?filtro=cantidad&busqueda=<?= urlencode($busqueda) ?>" class="btn-filtro-admin <?= $filtro == 'cantidad' ? 'btn-filtro-activo' : '' ?>">
                 Por cantidad
             </a>
-            <a href="reportes_admin.php?filtro=consumidas&busqueda=<?= urlencode($busqueda) ?>"
-               class="btn-filtro-admin <?= $filtro == 'consumidas' ? 'btn-filtro-activo' : '' ?>">
+            <a href="reportes_admin.php?filtro=consumidas&busqueda=<?= urlencode($busqueda) ?>" class="btn-filtro-admin <?= $filtro == 'consumidas' ? 'btn-filtro-activo' : '' ?>">
                 Por consumidas
             </a>
-            <a href="reportes_admin.php?filtro=sin_consumir&busqueda=<?= urlencode($busqueda) ?>"
-               class="btn-filtro-admin <?= $filtro == 'sin_consumir' ? 'btn-filtro-activo' : '' ?>">
+            <a href="reportes_admin.php?filtro=sin_consumir&busqueda=<?= urlencode($busqueda) ?>" class="btn-filtro-admin <?= $filtro == 'sin_consumir' ? 'btn-filtro-activo' : '' ?>">
                 Sin consumir
             </a>
         </div>

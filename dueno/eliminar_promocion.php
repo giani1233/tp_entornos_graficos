@@ -1,4 +1,5 @@
 <?php
+
 include '../includes/sesion.php';
 verificarSesion();
 verificarRol('dueño');
@@ -32,4 +33,5 @@ mysqli_close($conexion);
 
 header('Location: gestionar_promociones.php');
 exit;
+
 ?>

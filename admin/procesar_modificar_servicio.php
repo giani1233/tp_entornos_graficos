@@ -1,4 +1,5 @@
 <?php
+
 include '../includes/sesion.php';
 verificarSesion();
 verificarRol('admin');
@@ -60,4 +61,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: gestionar_servicios.php');
     exit;
 }
+
 ?>

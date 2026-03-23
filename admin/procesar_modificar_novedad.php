@@ -1,4 +1,5 @@
 <?php
+
 include '../includes/sesion.php';
 verificarSesion();
 verificarRol('admin');
@@ -47,4 +48,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: gestionar_novedades.php');
     exit;
 }
+
 ?>

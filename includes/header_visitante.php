@@ -16,6 +16,8 @@
     <link href="assets/css/seccionNovedades.css" rel="stylesheet">
     <link href="assets/css/seccionUbicacion.css" rel="stylesheet">
     <link href="assets/css/consumirPromo.css" rel="stylesheet">
+    <link href="assets/css/misSolicitudes.css" rel="stylesheet">
+    <link href="assets/css/seccionContacto.css" rel="stylesheet">
 </head>
 <body class="<?php echo $bodyClass ?? ''; ?>">
     <nav class="navbar navbar-expand-lg navbar-light" id="navbar-visitante">
@@ -36,6 +38,9 @@
                     <a class="nav-item nav-link" href="index.php#ubicacion">Ubicación</a>
                     <?php if (isset($_SESSION['codUsuario']) && $_SESSION['tipoUsuario'] == 'cliente'): ?>
                         <a class="nav-item nav-link" href="consumir_promo.php">Comprar</a>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['codUsuario']) && $_SESSION['tipoUsuario'] == 'cliente'): ?>
+                        <a class="nav-item nav-link" href="mis_solicitudes.php">Mis Solicitudes</a>
                     <?php endif; ?>
                     <?php if (isset($_SESSION['codUsuario'])): ?>
                         <a class="nav-item nav-link" id="btn-cerrar-sesion" href="logout.php" 

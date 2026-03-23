@@ -13,7 +13,7 @@
         }
     }
 
-    $diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+    $diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
     $diaActual = $diasSemana[date('N') - 1];
 
     if (isset($_SESSION['codUsuario']) && $_SESSION['tipoUsuario'] == 'cliente') {
@@ -45,6 +45,13 @@
         $resultado = mysqli_query($conexion, $sql);
     } 
 
+    $promociones = [];
+    if ($resultado) {
+        while ($fila = mysqli_fetch_assoc($resultado)) {
+            $promociones[] = $fila;
+        }
+    }
+
     $sql_locales = "SELECT * FROM locales WHERE activo = 1 AND rubroLocal != 'Gastronomia'";
     $resultado_locales = mysqli_query($conexion, $sql_locales);
     $locales = [];
@@ -60,13 +67,6 @@
     if ($resultado_gastronomia) {
         while ($fila = mysqli_fetch_assoc($resultado_gastronomia)) {
             $gastronomia[] = $fila;
-        }
-    }
-
-    $promociones = [];
-    if ($resultado) {
-        while ($fila = mysqli_fetch_assoc($resultado)) {
-            $promociones[] = $fila;
         }
     }
 
@@ -115,13 +115,12 @@
     <h2 class="titulo-seccion-promociones mb-4 text-center">Promociones del día</h2>
     <div class="contenedor-seccion-promociones">
         <?php if (empty($promociones)): ?>
-            <div class="text-center" style="opacity: 0.7;">
+            <div class="text-center">
                 <p>No hay promociones disponibles para hoy</p>
             </div>
         <?php else: ?>
             <div class="contenedor-promociones d-flex align-items-center position-relative">
                 <button class="carousel-btn carousel-btn-prev btn btn-light position-absolute start-0" onclick="moverCarrusel(-1)">‹</button>
-                
                 <div class="carrusel-promociones d-flex overflow-auto">
                     <?php foreach ($promociones as $promo): ?>
                         <div class="tarjeta-promo flex-shrink-0 mx-2">
@@ -144,7 +143,6 @@
                         </div>
                     <?php endforeach; ?>
                 </div>
-
                 <button class="carousel-btn carousel-btn-next btn btn-light position-absolute end-0" onclick="moverCarrusel(1)">›</button>
             </div>
         <?php endif; ?>
@@ -285,7 +283,7 @@
         <h2 class="titulo-seccion-ubicacion">Ubicación</h2>
         <div class="ubicacion-contenedor">
             <div class="ubicacion-mapa">
-                <img src="assets/images/mapa.png" alt="Mapa de ubicación Rio Shopping">
+                <img src="assets/images/mapaRio.jpeg" alt="Mapa de ubicación Rio Shopping">
             </div>
             <div class="ubicacion-info">
                 <div class="ubicacion-bloque">
@@ -313,6 +311,37 @@
 
             </div>
         </div>
+    </div>
+</section>
+
+<div class="separador-6"></div>
+
+<section class="seccion-contacto" id="contacto">
+    <div class="container">
+        <h2 class="titulo-seccion-contacto">Contacto</h2>
+        <form action="procesar_contacto.php" method="POST" class="form-contacto">
+            <div class="form-contacto-fila">
+                <div class="form-contacto-grupo">
+                    <label for="nombreContacto">Nombre</label>
+                    <input type="text" id="nombreContacto" name="nombreContacto" required>
+                </div>
+                <div class="form-contacto-grupo">
+                    <label for="apellidoContacto">Apellido</label>
+                    <input type="text" id="apellidoContacto" name="apellidoContacto" required>
+                </div>
+            </div>
+            <div class="form-contacto-grupo">
+                <label for="emailContacto">Email</label>
+                <input type="email" id="emailContacto" name="emailContacto" required>
+            </div>
+            <div class="form-contacto-grupo">
+                <label for="mensajeContacto">Consulta</label>
+                <textarea id="mensajeContacto" name="mensajeContacto" rows="5" required></textarea>
+            </div>
+            <div class="form-contacto-enviar">
+                <button type="submit" class="btn-contacto">Enviar consulta</button>
+            </div>
+        </form>
     </div>
 </section>
 

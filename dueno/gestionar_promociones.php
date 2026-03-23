@@ -1,4 +1,5 @@
 <?php
+
 include '../includes/sesion.php';
 verificarSesion();
 verificarRol('dueño');
@@ -24,6 +25,7 @@ if ($resultado) {
     }
 }
 mysqli_close($conexion);
+
 ?>
 
 <div class="contenedor-gestion">
@@ -69,8 +71,7 @@ mysqli_close($conexion);
                             <td class="celda-dias">
                                 <?php
                                     $dias = json_decode($promo['diasSemana'], true);
-                                    $abreviaciones = ['Lunes'=>'L','Martes'=>'Ma','Miercoles'=>'Mi',
-                                              'Jueves'=>'J','Viernes'=>'V','Sabado'=>'S','Domingo'=>'D'];
+                                    $abreviaciones = ['Lunes'=>'L','Martes'=>'Ma','Miercoles'=>'Mi', 'Jueves'=>'J','Viernes'=>'V','Sabado'=>'S','Domingo'=>'D'];
                                     $resultado_dias = [];
                                     foreach ($dias as $d) {
                                         $resultado_dias[] = $abreviaciones[$d] ?? $d;
@@ -84,9 +85,7 @@ mysqli_close($conexion);
                                 </span>
                             </td>
                             <td class="celda-acciones">
-                                <a href="eliminar_promocion.php?codPromo=<?= $promo['codPromo'] ?>"
-                                   class="btn-eliminar"
-                                   onclick="return confirm('Está seguro de que desea eliminar esta promoción?')">
+                                <a href="eliminar_promocion.php?codPromo=<?= $promo['codPromo'] ?>" class="btn-eliminar" onclick="return confirm('Está seguro de que desea eliminar esta promoción?')">
                                     🗑️
                                 </a>
                             </td>
@@ -96,7 +95,6 @@ mysqli_close($conexion);
             </table>
         </div>
     <?php endif; ?>
-
 </div>
 
 <?php include 'footer_dueno.php'; ?>

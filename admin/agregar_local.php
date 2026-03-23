@@ -1,10 +1,12 @@
 <?php
+
 $bodyClass = 'pagina-agregar-local';
 include '../includes/sesion.php';
 verificarSesion();
 verificarRol('admin');
 
 include 'header_admin.php';
+
 ?>
 
 <div class="container mt-5" id="form-container">

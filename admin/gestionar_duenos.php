@@ -7,8 +7,7 @@ verificarRol('admin');
 include 'header_admin.php';
 include '../includes/conexion_db.php';
 
-$sql = "SELECT u.codUsuario, u.nombreUsuario, u.apellidoUsuario, u.emailUsuario,
-               u.estadoUsuario, u.codLocalSeleccionado, l.nombreLocal
+$sql = "SELECT u.codUsuario, u.nombreUsuario, u.apellidoUsuario, u.emailUsuario, u.estadoUsuario, u.codLocalSeleccionado, l.nombreLocal
         FROM usuarios u
         LEFT JOIN locales l ON u.codLocalSeleccionado = l.codLocal
         WHERE u.tipoUsuario = 'dueño'
@@ -21,6 +20,7 @@ if ($resultado) {
     }
 }
 mysqli_close($conexion);
+
 ?>
 
 <div class="contenedor-gestion-admin">
@@ -60,16 +60,10 @@ mysqli_close($conexion);
                             </td>
                             <td class="celda-acciones-admin">
                                 <?php if ($dueno['estadoUsuario'] == 'Pendiente'): ?>
-                                    <a href="actualizar_dueno.php?codUsuario=<?= $dueno['codUsuario'] ?>&accion=aceptar"
-                                       class="btn-aceptar-admin"
-                                       onclick="return confirm('Está seguro de que desea aceptar a este dueño y asignarle el local solicitado?')"
-                                       title="Aceptar">
+                                    <a href="actualizar_dueno.php?codUsuario=<?= $dueno['codUsuario'] ?>&accion=aceptar" class="btn-aceptar-admin" onclick="return confirm('Está seguro de que desea aceptar a este dueño y asignarle el local solicitado?')" title="Aceptar">
                                         ✅
                                     </a>
-                                    <a href="actualizar_dueno.php?codUsuario=<?= $dueno['codUsuario'] ?>&accion=rechazar"
-                                       class="btn-rechazar-admin"
-                                       onclick="return confirm('Está seguro de que desea rechazar y eliminar a este usuario?')"
-                                       title="Rechazar">
+                                    <a href="actualizar_dueno.php?codUsuario=<?= $dueno['codUsuario'] ?>&accion=rechazar" class="btn-rechazar-admin" onclick="return confirm('Está seguro de que desea rechazar y eliminar a este usuario?')" title="Rechazar">
                                         ❌
                                     </a>
                                 <?php endif; ?>

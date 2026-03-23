@@ -19,6 +19,16 @@ include 'includes/header.php';
                             ?>
                         </div>
                     <?php endif; ?>
+                    <?php if (isset($_GET['pendiente']) && $_GET['pendiente'] == 'verificacion'): ?>
+                        <div class="alert alert-info text-center">
+                            Te enviamos un mail para verificar tu cuenta. Revisá tu bandeja de entrada.
+                        </div>
+                    <?php endif; ?>
+                    <?php if (isset($_GET['pendiente']) && $_GET['pendiente'] == 'admin'): ?>
+                        <div class="alert alert-info text-center">
+                            Tu cuenta está siendo revisada por un administrador.
+                        </div>
+                    <?php endif; ?>
                     <form action="procesar_login.php" method="POST" id="formLogin">
                         <div class="mb-3">
                             <label for="emailUsuario" class="form-label">Email:</label>
@@ -39,7 +49,6 @@ include 'includes/header.php';
                             <a href="registro.php" class="text-decoration-none">Registrarse</a>
                         </p>
                     </div>
-
                 </div>
             </div>
         </div>

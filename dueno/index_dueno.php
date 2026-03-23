@@ -9,7 +9,9 @@ include 'header_dueno.php';
 include '../includes/conexion_db.php';
 
 $codUsuario = $_SESSION['codUsuario'];
-$sql = "SELECT codLocal, nombreLocal, imagen FROM locales WHERE codUsuario = $codUsuario";
+$sql = "SELECT codLocal, nombreLocal, imagen 
+        FROM locales 
+        WHERE codUsuario = $codUsuario";
 $resultado = mysqli_query($conexion, $sql);
 $local = mysqli_fetch_assoc($resultado);
 mysqli_close($conexion);
@@ -35,4 +37,5 @@ mysqli_close($conexion);
         </div>
     </div>
 </div>
+
 <?php include 'footer_dueno.php'; ?>

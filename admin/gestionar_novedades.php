@@ -18,6 +18,7 @@ if ($resultado) {
     }
 }
 mysqli_close($conexion);
+
 ?>
 
 <div class="contenedor-gestion-admin">
@@ -51,15 +52,10 @@ mysqli_close($conexion);
                             <td><?= htmlspecialchars($novedad['fechaHastaNovedad']) ?></td>
                             <td><?= htmlspecialchars($novedad['categoriaCliente']) ?></td>
                             <td class="celda-acciones-admin">
-                                <a href="modificar_novedad.php?codNovedad=<?= $novedad['codNovedad'] ?>"
-                                   class="btn-aceptar-admin" id="modificarNovedadBtn"
-                                   title="Modificar">
+                                <a href="modificar_novedad.php?codNovedad=<?= $novedad['codNovedad'] ?>" class="btn-aceptar-admin" id="modificarNovedadBtn" title="Modificar">
                                     ✏️
                                 </a>
-                                <a href="eliminar_novedad.php?codNovedad=<?= $novedad['codNovedad'] ?>"
-                                   class="btn-rechazar-admin"
-                                   onclick="return confirm('Está seguro de que deseas eliminar esta novedad?')"
-                                   title="Eliminar">
+                                <a href="eliminar_novedad.php?codNovedad=<?= $novedad['codNovedad'] ?>" class="btn-rechazar-admin" onclick="return confirm('Está seguro de que deseas eliminar esta novedad?')" title="Eliminar">
                                     🗑️
                                 </a>
                             </td>

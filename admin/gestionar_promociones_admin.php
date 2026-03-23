@@ -7,8 +7,7 @@ verificarRol('admin');
 include 'header_admin.php';
 include '../includes/conexion_db.php';
 
-$sql = "SELECT p.codPromo, p.imagen, p.textoPromo, p.fechaDesdePromo, p.fechaHastaPromo,
-               p.categoriaCliente, p.diasSemana, p.estadoPromo, l.nombreLocal
+$sql = "SELECT p.codPromo, p.imagen, p.textoPromo, p.fechaDesdePromo, p.fechaHastaPromo, p.categoriaCliente, p.diasSemana, p.estadoPromo, l.nombreLocal
         FROM promociones p
         JOIN locales l ON p.codLocal = l.codLocal
         ORDER BY p.estadoPromo ASC, p.fechaDesdePromo DESC";
@@ -20,6 +19,7 @@ if ($resultado) {
     }
 }
 mysqli_close($conexion);
+
 ?>
 
 <div class="contenedor-gestion-admin">
@@ -70,8 +70,7 @@ mysqli_close($conexion);
                             <td class="celda-dias-admin">
                                 <?php
                                     $dias = json_decode($promo['diasSemana'], true);
-                                    $abrevs = ['Lunes'=>'L','Martes'=>'Ma','Miercoles'=>'Mi',
-                                               'Jueves'=>'J','Viernes'=>'V','Sabado'=>'S','Domingo'=>'D'];
+                                    $abrevs = ['Lunes'=>'L','Martes'=>'Ma','Miercoles'=>'Mi', 'Jueves'=>'J','Viernes'=>'V','Sabado'=>'S','Domingo'=>'D'];
                                     $resultado_dias = [];
                                     foreach ($dias as $d) {
                                         $resultado_dias[] = $abrevs[$d] ?? $d;
@@ -86,14 +85,10 @@ mysqli_close($conexion);
                             </td>
                             <td class="celda-acciones-admin">
                                 <?php if ($promo['estadoPromo'] == 'Pendiente'): ?>
-                                    <a href="procesar_gestion_promocion.php?codPromo=<?= $promo['codPromo'] ?>&estado=Aprobada"
-                                       class="btn-aceptar-admin"
-                                       onclick="return confirm('Está seguro de que desea aprobar esta promoción?')">
+                                    <a href="procesar_gestion_promocion.php?codPromo=<?= $promo['codPromo'] ?>&estado=Aprobada" class="btn-aceptar-admin" onclick="return confirm('Está seguro de que desea aprobar esta promoción?')">
                                         ✅
                                     </a>
-                                    <a href="procesar_gestion_promocion.php?codPromo=<?= $promo['codPromo'] ?>&estado=Denegada"
-                                       class="btn-rechazar-admin"
-                                       onclick="return confirm('Está seguro de que desea rechazar esta promoción?')">
+                                    <a href="procesar_gestion_promocion.php?codPromo=<?= $promo['codPromo'] ?>&estado=Denegada" class="btn-rechazar-admin" onclick="return confirm('Está seguro de que desea rechazar esta promoción?')">
                                         ❌
                                     </a>
                                 <?php endif; ?>
@@ -104,7 +99,6 @@ mysqli_close($conexion);
             </table>
         </div>
     <?php endif; ?>
-
 </div>
 <div class="modal fade" id="modalImagen" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">

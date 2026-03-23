@@ -7,9 +7,7 @@ verificarRol('admin');
 include 'header_admin.php';
 include '../includes/conexion_db.php';
 
-$sql = "SELECT l.codLocal, l.imagen, l.nombreLocal, l.informacionLocal,
-               l.ubicacionLocal, l.rubroLocal,
-               u.nombreUsuario, u.apellidoUsuario
+$sql = "SELECT l.codLocal, l.imagen, l.nombreLocal, l.informacionLocal, l.ubicacionLocal, l.rubroLocal, u.nombreUsuario, u.apellidoUsuario
         FROM locales l
         LEFT JOIN usuarios u ON l.codUsuario = u.codUsuario
         ORDER BY l.nombreLocal ASC";
@@ -21,6 +19,7 @@ if ($resultado) {
     }
 }
 mysqli_close($conexion);
+
 ?>
 
 <div class="contenedor-gestion-admin">
@@ -50,12 +49,9 @@ mysqli_close($conexion);
                         <tr class="fila-dato-admin <?= $i % 2 == 0 ? 'fila-par-admin' : 'fila-impar-admin' ?>">
                             <td>
                                 <?php if (!empty($local['imagen'])): ?>
-                                    <img src="../assets/images/locales/<?= htmlspecialchars($local['imagen']) ?>"
-                                         alt="Logo" class="imagen-promo-admin imagen-clickeable"
-                                         onclick="abrirModal(this.src)">
+                                    <img src="../assets/images/locales/<?= htmlspecialchars($local['imagen']) ?>" alt="Logo" class="imagen-promo-admin imagen-clickeable" onclick="abrirModal(this.src)">
                                 <?php else: ?>
-                                    <img src="../assets/images/promociones/no-imagen.png"
-                                         alt="Sin imagen" class="imagen-promo-admin">
+                                    <img src="../assets/images/promociones/no-imagen.png" alt="Sin imagen" class="imagen-promo-admin">
                                 <?php endif; ?>
                             </td>
                             <td><?= $local['codLocal'] ?></td>
@@ -69,15 +65,10 @@ mysqli_close($conexion);
                                 <?php endif; ?>
                             </td>
                             <td class="celda-acciones-admin">
-                                <a href="modificar_local.php?codLocal=<?= $local['codLocal'] ?>"
-                                   class="btn-aceptar-admin" id="btnModificar"
-                                   title="Modificar">
+                                <a href="modificar_local.php?codLocal=<?= $local['codLocal'] ?>" class="btn-aceptar-admin" id="btnModificar" title="Modificar">
                                     ✏️
                                 </a>
-                                <a href="procesar_eliminar_local.php?codLocal=<?= $local['codLocal'] ?>"
-                                   class="btn-rechazar-admin"
-                                   onclick="return confirm('Está seguro de que desea eliminar este local? Se eliminarán también sus promociones.')"
-                                   title="Eliminar">
+                                <a href="procesar_eliminar_local.php?codLocal=<?= $local['codLocal'] ?>" class="btn-rechazar-admin" onclick="return confirm('Está seguro de que desea eliminar este local? Se eliminarán también sus promociones.')" title="Eliminar">
                                     🗑️
                                 </a>
                             </td>

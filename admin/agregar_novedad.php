@@ -6,6 +6,7 @@ verificarSesion();
 verificarRol('admin');
 
 include 'header_admin.php';
+
 ?>
 
 <div class="container mt-5" id="form-container">

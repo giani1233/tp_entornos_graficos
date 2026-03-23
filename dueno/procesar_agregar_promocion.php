@@ -67,4 +67,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: agregar_promocion.php');
     exit;
 }
+
 ?>

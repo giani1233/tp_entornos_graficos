@@ -1,4 +1,5 @@
 <?php
+
 include '../includes/sesion.php';
 verificarSesion();
 verificarRol('admin');
@@ -17,9 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $nombreArchivo = null;
     if (isset($_FILES['imagenServicio']) && $_FILES['imagenServicio']['error'] == 0) {
-        $extension     = pathinfo($_FILES['imagenServicio']['name'], PATHINFO_EXTENSION);
+        $extension = pathinfo($_FILES['imagenServicio']['name'], PATHINFO_EXTENSION);
         $nombreArchivo = uniqid('servicio_') . '.' . $extension;
-        $destino       = '../assets/images/servicios/' . $nombreArchivo;
+        $destino = '../assets/images/servicios/' . $nombreArchivo;
         if (!move_uploaded_file($_FILES['imagenServicio']['tmp_name'], $destino)) {
             header('Location: agregar_servicio.php?error=Error al subir la imagen.');
             exit;
@@ -43,4 +44,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: agregar_servicio.php');
     exit;
 }
+
 ?>

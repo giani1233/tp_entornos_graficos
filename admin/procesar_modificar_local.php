@@ -1,4 +1,5 @@
 <?php
+
 include '../includes/sesion.php';
 verificarSesion();
 verificarRol('admin');
@@ -29,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $imagenActual = $filaImagen['imagen'];
 
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
-        $extension    = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+        $extension = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
         $nombreArchivo = uniqid('local_') . '.' . $extension;
-        $destino      = '../assets/images/locales/' . $nombreArchivo;
+        $destino = '../assets/images/locales/' . $nombreArchivo;
         if (!move_uploaded_file($_FILES['imagen']['tmp_name'], $destino)) {
             header("Location: modificar_local.php?codLocal=$codLocal&error=Error al subir la imagen.");
             exit;
@@ -64,4 +65,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: gestionar_locales.php');
     exit;
 }
+
 ?>

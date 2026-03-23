@@ -46,4 +46,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: agregar_local.php');
     exit;
 }
+
 ?>

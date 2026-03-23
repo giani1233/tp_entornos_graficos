@@ -73,7 +73,7 @@ mysqli_close($conexion);
                         </div>
                     </form>
                     <div class="text-center mt-3" id="posee-cuenta">
-                        <p>¿Ya posee cuenta?
+                        <p>Ya posee cuenta?
                             <a href="login.php" class="text-decoration-none">Inicia sesión aquí</a>
                         </p>
                     </div>

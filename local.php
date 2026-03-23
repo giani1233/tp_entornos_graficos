@@ -25,7 +25,7 @@ if (!$resultado || mysqli_num_rows($resultado) == 0) {
 
 $local = mysqli_fetch_assoc($resultado);
 
-$diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+$diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
 $diaActual  = $diasSemana[date('N') - 1];
 $promociones_local = [];
 
@@ -79,7 +79,6 @@ if ($resultado_promos) {
                     <p class="card-text"><?php echo htmlspecialchars($local['informacionLocal']); ?></p>
                     <p class="card-text"><strong>Ubicación:</strong> <?php echo htmlspecialchars($local['ubicacionLocal']); ?></p>
                     <p class="card-text"><strong>Rubro:</strong> <?php echo htmlspecialchars($local['rubroLocal']); ?></p>
-
                     <?php if (!empty($promociones_local)): ?>
                         <hr>
                         <h5 class="mb-3">Promociones disponibles hoy</h5>
@@ -96,7 +95,6 @@ if ($resultado_promos) {
                         <hr>
                         <p class="text-center">No hay promociones disponibles hoy para este local.</p>
                     <?php endif; ?>
-
                     <?php if (isset($_SESSION['codUsuario']) && $_SESSION['tipoUsuario'] == 'cliente'): ?>
                         <div class="mt-2 text-center">
                             <a href="consumir_promo.php?codLocal=<?= $codLocal ?>" class="btn-consumir">

@@ -5,7 +5,7 @@ $bodyClass = 'pagina-consumir';
 include 'includes/header_visitante.php';
 include 'includes/conexion_db.php';
 
-$diasSemana       = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+$diasSemana       = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
 $diaActual        = $diasSemana[date('N') - 1];
 $categoriaCliente = $_SESSION['categoriaCliente'];
 
@@ -17,20 +17,25 @@ $codLocalSeleccionado    = isset($_GET['codLocal']) && is_numeric($_GET['codLoca
 $codPromoPreseleccionada = isset($_GET['codPromo']) && is_numeric($_GET['codPromo']) ? intval($_GET['codPromo']) : null;
 $promociones = [];
 
-if ($codLocalSeleccionado) {
+$codCliente = $_SESSION['codUsuario'];
+
+if ($codLocalSeleccionado) {    
     $sql_promos = "SELECT codPromo, textoPromo
-                   FROM promociones
-                   WHERE codLocal = $codLocalSeleccionado
-                   AND estadoPromo = 'Aprobada'
-                   AND fechaDesdePromo <= CURDATE()
-                   AND fechaHastaPromo >= CURDATE()
-                   AND JSON_CONTAINS(diasSemana, '\"$diaActual\"')
-                   AND (
-                       categoriaCliente = 'Inicial'
-                       OR (categoriaCliente = 'Medium' AND '$categoriaCliente' IN ('Medium', 'Premium'))
-                       OR (categoriaCliente = 'Premium' AND '$categoriaCliente' = 'Premium')
-                   )
-                   ORDER BY fechaDesdePromo DESC";
+                FROM promociones
+                WHERE codLocal = $codLocalSeleccionado
+                AND estadoPromo = 'Aprobada'
+                AND fechaDesdePromo <= CURDATE()
+                AND fechaHastaPromo >= CURDATE()
+                AND JSON_CONTAINS(diasSemana, '\"$diaActual\"')
+                AND (
+                    categoriaCliente = 'Inicial'
+                    OR (categoriaCliente = 'Medium' AND '$categoriaCliente' IN ('Medium', 'Premium'))
+                    OR (categoriaCliente = 'Premium' AND '$categoriaCliente' = 'Premium')
+                )
+                AND codPromo NOT IN (
+                    SELECT codPromo FROM uso_promociones WHERE codCliente = $codCliente
+                )
+                ORDER BY fechaDesdePromo DESC";
     $resultado_promos = mysqli_query($conexion, $sql_promos);
     if ($resultado_promos) {
         $promociones = mysqli_fetch_all($resultado_promos, MYSQLI_ASSOC);
@@ -51,6 +56,11 @@ if ($codLocalSeleccionado) {
                             ¡Solicitud enviada exitosamente!
                         </div>
                     <?php endif; ?>
+                    <?php if (isset($_GET['error'])): ?>
+                        <div class="alert alert-warning text-center mb-3">
+                            <?= htmlspecialchars($_GET['error']) ?>
+                        </div>
+                    <?php endif; ?>
                     <form method="GET" action="consumir_promo.php">
                         <div class="mb-3">
                             <label for="codLocal" class="form-label">Local:</label>
@@ -68,12 +78,12 @@ if ($codLocalSeleccionado) {
                     </form>
                     <?php if ($codLocalSeleccionado): ?>
                         <?php if (empty($promociones)): ?>
-                            <p class="text-center mt-2" style="opacity: 0.7;">
+                            <p class="text-center mt-2">
                                 No hay promociones disponibles para este local hoy.
                             </p>
                         <?php else: ?>
                             <form method="POST" action="procesar_solicitud_promo.php"
-                                onsubmit="return confirm('¿Confirmás que querés solicitar esta promoción?')">
+                                onsubmit="return confirm('Confirma que desea solicitar esta promoción?')">
                                 <input type="hidden" name="codLocal" value="<?= $codLocalSeleccionado ?>">
                                 <div class="mb-3">
                                     <label for="codPromo" class="form-label">Promoción:</label>

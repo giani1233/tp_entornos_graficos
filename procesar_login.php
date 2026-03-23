@@ -3,10 +3,10 @@ session_start();
 include 'includes/conexion_db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+    
     $email = $_POST['emailUsuario'];
     $password = $_POST['passwordUsuario'];
-
+    
     if (empty($email) || empty($password)) {
         header('Location: login.php?error=credenciales');
         exit();

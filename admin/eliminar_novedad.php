@@ -1,4 +1,5 @@
 <?php
+
 include '../includes/sesion.php';
 verificarSesion();
 verificarRol('admin');
@@ -18,4 +19,5 @@ mysqli_close($conexion);
 
 header('Location: gestionar_novedades.php');
 exit;
+
 ?>

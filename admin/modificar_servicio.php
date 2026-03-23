@@ -24,6 +24,7 @@ if (!$resultado || mysqli_num_rows($resultado) == 0) {
 
 $servicio = mysqli_fetch_assoc($resultado);
 mysqli_close($conexion);
+
 ?>
 
 <div class="container mt-5" id="form-container">
@@ -44,9 +45,7 @@ mysqli_close($conexion);
                         <div class="mb-3">
                             <label class="form-label">Imagen actual:</label><br>
                             <?php if (!empty($servicio['imagenServicio'])): ?>
-                                <img src="../assets/images/servicios/<?= htmlspecialchars($servicio['imagenServicio']) ?>"
-                                     alt="Imagen actual"
-                                     style="width:80px; height:80px; object-fit:cover; border-radius:10px; margin-bottom:0.5rem;">
+                                <img src="../assets/images/servicios/<?= htmlspecialchars($servicio['imagenServicio']) ?>" alt="Imagen actual" style="width:80px; height:80px; object-fit:cover; border-radius:10px; margin-bottom:0.5rem;">
                             <?php else: ?>
                                 <span style="opacity:0.6; font-size:0.9rem;">Sin imagen</span>
                             <?php endif; ?>
@@ -54,13 +53,11 @@ mysqli_close($conexion);
                         </div>
                         <div class="mb-3">
                             <label for="nombreServicio" class="form-label">Nombre:</label>
-                            <input type="text" class="form-control" id="nombreServicio" name="nombreServicio"
-                                   value="<?= htmlspecialchars($servicio['nombreServicio']) ?>" required>
+                            <input type="text" class="form-control" id="nombreServicio" name="nombreServicio" value="<?= htmlspecialchars($servicio['nombreServicio']) ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="descripcionServicio" class="form-label">Descripción:</label>
-                            <textarea class="form-control" id="descripcionServicio" name="descripcionServicio"
-                                      rows="3" required><?= htmlspecialchars($servicio['descripcionServicio']) ?></textarea>
+                            <textarea class="form-control" id="descripcionServicio" name="descripcionServicio" rows="3" required><?= htmlspecialchars($servicio['descripcionServicio']) ?></textarea>
                         </div>
                         <div class="d-grid mt-4">
                             <button type="submit" class="btn btn-primary btn-lg" id="btn-registrarse">

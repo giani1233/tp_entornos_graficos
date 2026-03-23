@@ -1,0 +1,137 @@
+.separador-6 {
+    height: 600px; 
+    width: 100%;
+    background-color: #7e8fa5;
+    background-image: url('../images/ola2.svg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 100% auto;
+    margin-bottom: -1px;
+}
+
+.seccion-contacto {
+    color: #4c596a;
+    width: 100%;
+    padding: 4rem 0 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.titulo-seccion-contacto {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'AsapCondensedSemiBold', sans-serif;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.03em;
+}
+
+.alert-contacto {
+    background-color: #2e7d52;
+    color: #ffffff;
+    font-family: 'AsapCondensedRegular', sans-serif;
+    font-size: 1rem;
+    border-radius: 12px;
+    padding: 0.9rem 1.4rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-contacto {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-contacto-fila {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.form-contacto-fila .form-contacto-grupo {
+    flex: 1;
+}
+
+.form-contacto-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-contacto-grupo label {
+    font-family: 'AsapCondensedSemiBold', sans-serif;
+    font-size: 0.95rem;
+    color: #4c596a;
+    letter-spacing: 0.02em;
+}
+
+.form-contacto-grupo input,
+.form-contacto-grupo textarea {
+    background-color: #ffffff;
+    border: 2px solid #c8d1da;
+    border-radius: 10px;
+    padding: 0.65rem 1rem;
+    font-family: 'AsapCondensedRegular', sans-serif;
+    font-size: 1rem;
+    color: #4c596a;
+    outline: none;
+    transition: border-color 0.2s ease;
+    resize: none;
+}
+
+.form-contacto-grupo input:focus,
+.form-contacto-grupo textarea:focus {
+    border-color: #7e8fa5;
+}
+
+.form-contacto-grupo input::placeholder,
+.form-contacto-grupo textarea::placeholder {
+    color: #a0adb8;
+}
+
+.form-contacto-enviar {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.btn-contacto {
+    background-color: #4c596a;
+    color: #ffffff;
+    font-family: 'AsapCondensedSemiBold', sans-serif;
+    font-size: 1.05rem;
+    padding: 0.75rem 2.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+    letter-spacing: 0.03em;
+}
+
+.btn-contacto:hover {
+    background-color: #7e8fa5;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .seccion-contacto {
+        padding: 3rem 0 4rem 0;
+    }
+
+    .titulo-seccion-contacto {
+        font-size: 1.6rem;
+    }
+
+    .form-contacto-fila {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .form-contacto {
+        padding: 0 1rem;
+    }
+}

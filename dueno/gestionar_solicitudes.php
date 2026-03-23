@@ -1,4 +1,5 @@
 <?php
+
 include '../includes/sesion.php';
 verificarSesion();
 verificarRol('dueño');
@@ -13,9 +14,7 @@ $resultado_local = mysqli_query($conexion, $sql_local);
 $local = mysqli_fetch_assoc($resultado_local);
 $codLocal = $local['codLocal'];
 
-$sql = "SELECT up.codUso, up.fechaUsoPromo, up.estadoUsoPromo,
-               p.textoPromo,
-               u.nombreUsuario, u.apellidoUsuario
+$sql = "SELECT up.codUso, up.fechaUsoPromo, up.estadoUsoPromo, p.textoPromo, u.nombreUsuario, u.apellidoUsuario
         FROM uso_promociones up
         JOIN promociones p ON up.codPromo = p.codPromo
         JOIN usuarios u ON up.codCliente = u.codUsuario
@@ -29,6 +28,7 @@ if ($resultado) {
     }
 }
 mysqli_close($conexion);
+
 ?>
 
 <div class="contenedor-gestion">
@@ -62,14 +62,10 @@ mysqli_close($conexion);
                             </td>
                             <td class="celda-acciones">
                                 <?php if ($sol['estadoUsoPromo'] == 'Enviada'): ?>
-                                    <a href="actualizar_solicitud.php?codUso=<?= $sol['codUso'] ?>&estado=Aceptada"
-                                       class="btn-aceptar"
-                                       onclick="return confirm('Está seguro de que desea aceptar esta solicitud?')">
+                                    <a href="actualizar_solicitud.php?codUso=<?= $sol['codUso'] ?>&estado=Aceptada" class="btn-aceptar" onclick="return confirm('Está seguro de que desea aceptar esta solicitud?')">
                                         ✅
                                     </a>
-                                    <a href="actualizar_solicitud.php?codUso=<?= $sol['codUso'] ?>&estado=Rechazada"
-                                       class="btn-eliminar"
-                                       onclick="return confirm('Está seguro de que desea rechazar esta solicitud?')">
+                                    <a href="actualizar_solicitud.php?codUso=<?= $sol['codUso'] ?>&estado=Rechazada" class="btn-eliminar" onclick="return confirm('Está seguro de que desea rechazar esta solicitud?')">
                                         ❌
                                     </a>
                                 <?php endif; ?>

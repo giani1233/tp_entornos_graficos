@@ -1,4 +1,5 @@
 <?php
+
 include 'includes/sesion.php';
 verificarSesion();
 verificarRol('cliente');
@@ -15,7 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Error: datos incompletos.");
     }
 
-    $diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+    $sqlYaUsada = "SELECT codUso FROM uso_promociones 
+                   WHERE codCliente = $codCliente AND codPromo = $codPromo";
+    $resYaUsada = mysqli_query($conexion, $sqlYaUsada);
+    if ($resYaUsada && mysqli_num_rows($resYaUsada) > 0) {
+        header('Location: consumir_promo.php?error=Ya solicitaste esta promoción anteriormente.');
+        exit;
+    }
+
+    $diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
     $diaActual  = $diasSemana[date('N') - 1];
     $categoriaCliente = $_SESSION['categoriaCliente'];
 
@@ -30,9 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         die("Error al registrar la solicitud: " . mysqli_error($conexion));
     }
-
+    
 } else {
     header('Location: consumir_promo.php');
     exit();
 }
+
 ?>

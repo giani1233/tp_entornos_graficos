@@ -12,7 +12,7 @@ if (!isset($_GET['codUsuario']) || !is_numeric($_GET['codUsuario'])) {
 }
 
 $codUsuario = intval($_GET['codUsuario']);
-$accion     = $_GET['accion'] ?? '';
+$accion = $_GET['accion'] ?? '';
 
 if (!in_array($accion, ['aceptar', 'rechazar'])) {
     header('Location: gestionar_duenos.php');
@@ -54,4 +54,5 @@ if ($accion == 'aceptar') {
     header('Location: gestionar_duenos.php?actualizado=1');
     exit;
 }
+
 ?>

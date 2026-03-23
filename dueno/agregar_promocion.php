@@ -64,10 +64,7 @@ $diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'D
                             <div class="dias-check-grid">
                                 <?php foreach ($diasSemana as $dia): ?>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                               name="diasSemana[]"
-                                               id="dia_<?= $dia ?>"
-                                               value="<?= $dia ?>">
+                                        <input class="form-check-input" type="checkbox" name="diasSemana[]" id="dia_<?= $dia ?>" value="<?= $dia ?>">
                                         <label class="form-check-label" for="dia_<?= $dia ?>">
                                             <?= $dia ?>
                                         </label>

@@ -1,0 +1,133 @@
+@font-face {
+    font-family: 'AsapCondensedSemiBold';
+    src: url('fonts/AsapCondensed-SemiBold.ttf') format('truetype');
+    font-weight: semi-bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AsapCondensed';
+    src: url('fonts/AsapCondensed-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.contenedor-mis-solicitudes {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 3rem 2rem;
+    min-height: calc(100vh - 15vh);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.titulo-mis-solicitudes {
+    font-family: 'AsapCondensedSemiBold', sans-serif;
+    font-size: 2rem;
+    color: #4c596a;
+    margin: 0;
+}
+
+.sin-datos-cliente {
+    font-family: 'AsapCondensed', sans-serif;
+    color: #7e8fa5;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 2rem;
+    opacity: 0.8;
+}
+
+.tabla-wrapper-cliente {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-cliente {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+    font-family: 'AsapCondensed', sans-serif;
+    font-size: 0.97rem;
+}
+
+.fila-header-cliente th {
+    background-color: #283442;
+    color: #ffffff;
+    font-family: 'AsapCondensedSemiBold', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.fila-header-cliente th:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.fila-header-cliente th:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.fila-par-cliente td {
+    background-color: #4c596a;
+    color: #ffffff;
+}
+
+.fila-impar-cliente td {
+    background-color: #769cb8;
+    color: #ffffff;
+}
+
+.fila-dato-cliente td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.fila-dato-cliente td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.tabla-cliente td {
+    padding: 0.65rem 1rem;
+    vertical-align: middle;
+    border: none;
+}
+
+.imagen-solicitud {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 2px 8px rgba(76, 89, 106, 0.15);
+}
+
+.celda-texto-cliente {
+    max-width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.badge-cliente-enviada  { background-color: #b07d2a; color: #fff; }
+.badge-cliente-aceptada { background-color: #2e7d52; color: #fff; }
+.badge-cliente-rechazada { background-color: #8b2e2e; color: #fff; }
+
+@media (max-width: 700px) {
+    .titulo-mis-solicitudes {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .contenedor-mis-solicitudes {
+        padding: 1.5rem 1rem 2rem 1rem;
+    }
+
+    .celda-texto-cliente {
+        max-width: 160px;
+    }
+}
